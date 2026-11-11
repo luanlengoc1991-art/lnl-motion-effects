@@ -1,0 +1,11 @@
+# Trang chính và hướng dẫn: luôn hỏi lại bản mới (deploy mới thấy ngay), Cloudflare giữ 5 phút.
+/
+  Cache-Control: public, max-age=0, s-maxage=300, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, s-maxage=300, must-revalidate
+# Video, ảnh bìa, phông: lưu 1 ngày, dùng bản cũ trong lúc làm mới nền tới 7 ngày.
+/effects/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

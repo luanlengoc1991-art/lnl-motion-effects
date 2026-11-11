@@ -32,6 +32,7 @@ article{background:#171b22;border:1px solid #232a33;border-radius:20px;overflow:
 h3{margin:6px 0 6px;font-size:18px}p{margin:0 0 8px;font-size:14px;line-height:1.5;color:#aab2bf}.u{color:#8a93a1;font-size:13px}
 .a{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}.a a{color:#ff8a63;font-size:13px;font-weight:600;text-decoration:none}.a a:hover{text-decoration:underline}
 footer{padding:0 6vw 40px;color:#8a93a1;font-size:13px}
+@media(max-width:640px){.bar{position:static}.bar input{margin-left:0;flex:1 1 100%;min-width:0}main{grid-template-columns:1fr}}
 </style></head><body>
 <header><h1>LNL <b>Motion</b> Effects</h1><p class="sub">${fx.length} hiệu ứng motion graphic dựng bằng HyperFrames + GSAP, chữ tiếng Việt, 4 bộ màu. Mỗi hiệu ứng là một dự án HyperFrames chạy ngay: tải thư mục về, sửa chữ, <code>npx hyperframes render</code>.</p></header>
 <div class="bar"><button class="on" data-f="">Tất cả</button>${groups.map((g) => `<button data-f="${esc(g)}">${esc(g)}</button>`).join('')}<input id="q" placeholder="Tìm: số liệu, chat, logo…" aria-label="Tìm hiệu ứng"></div>
@@ -50,10 +51,10 @@ fs.writeFileSync(path.join(ROOT, 'index.html'), html);
 
 const md = [`# LNL Motion Effects`, '',
   `${fx.length} hiệu ứng motion graphic dựng bằng **HyperFrames + GSAP**, chữ tiếng Việt (Be Vietnam Pro), 4 bộ màu dựng sẵn. Tự thiết kế và viết mới.`, '',
-  'Xem online: https://luanlengoc1991-art.github.io/lnl-motion-effects/', '',
+  'Xem online: https://effects.luangroup.asia/', '',
   '## Dùng một hiệu ứng', '```sh', 'cd effects/<ten-hieu-ung>', 'npx hyperframes preview   # xem, sửa trực tiếp', 'npx hyperframes render    # xuất MP4 1920x1080', '```',
   'Chữ có `data-var-text` sửa trong `compositions/fx.html`; màu là 6 biến trong `#root` của `index.html` (bảng màu ở `spec.md` từng hiệu ứng).', '',
-  '## Thêm hiệu ứng', 'Viết thêm một mục trong `tools/effects.mjs`, rồi `node tools/build.mjs` (sinh dự án), kiểm tra bằng `npx hyperframes check`, render `preview.mp4` / `poster.jpg`, và `node tools/gallery.mjs` (trang thư viện + README).', '',
+  '## Đưa lên web', 'Trang chạy trên Cloudflare (Workers Static Assets) ở https://effects.luangroup.asia/: `node tools/gallery.mjs && node tools/dist.mjs && npx wrangler deploy`. Cache: trang chính hỏi lại mỗi lần (Cloudflare giữ 5 phút), video và ảnh lưu 1 ngày (`_headers`).', '','## Thêm hiệu ứng', 'Viết thêm một mục trong `tools/effects.mjs`, rồi `node tools/build.mjs` (sinh dự án), kiểm tra bằng `npx hyperframes check`, render `preview.mp4` / `poster.jpg`, và `node tools/gallery.mjs` (trang thư viện + README).', '',
   ...groups.flatMap((g) => [`## ${g}`, '', '| Xem trước | Hiệu ứng | Thời lượng |', '|---|---|---|',
     ...fx.filter((e) => e.group === g).map((e) => `| [<img src="effects/${e.slug}/poster.jpg" width="260">](effects/${e.slug}/preview.mp4) | **[${e.name}](effects/${e.slug}/)**<br>${e.desc}<br><sub>Dùng khi: ${e.use}</sub> | ${e.duration}s |`), '']),
   '## Bộ màu', '', '| Bộ | Nền | Nhấn | Nhấn 2 |', '|---|---|---|---|', ...Object.values(THEMES).map((t) => `| ${t.name} | ${t.bg} | ${t.accent} | ${t.accent2} |`), '',

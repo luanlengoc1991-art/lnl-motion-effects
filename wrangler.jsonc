@@ -1,0 +1,7 @@
+{
+  // Trang thư viện tĩnh trên Cloudflare (Workers Static Assets), tên miền phụ effects.luangroup.asia.
+  "name": "lnl-motion-effects",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "./dist", "not_found_handling": "404-page" },
+  "routes": [{ "pattern": "effects.luangroup.asia", "custom_domain": true }]
+}

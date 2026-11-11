@@ -2,3 +2,4 @@
 .check-*.json
 renders/
 node_modules/
+dist/
