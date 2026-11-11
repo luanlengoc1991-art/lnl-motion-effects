@@ -17,8 +17,8 @@ h3{margin:6px 0 6px;font-size:18px}p{margin:0 0 8px;font-size:14px;line-height:1
 footer{padding:0 6vw 40px;color:#8a93a1;font-size:13px}
 @media(max-width:640px){.bar{position:static}.bar input{margin-left:0;flex:1 1 100%;min-width:0}main{grid-template-columns:1fr}}
 </style></head><body>
-<header><h1>LNL <b>Motion</b> Effects</h1><p class="sub">30 hiệu ứng motion graphic dựng bằng HyperFrames + GSAP, chữ tiếng Việt, 4 bộ màu. Mỗi hiệu ứng là một dự án HyperFrames chạy ngay: tải thư mục về, sửa chữ, <code>npx hyperframes render</code>.</p></header>
-<div class="bar"><button class="on" data-f="">Tất cả</button><button data-f="Mở đầu">Mở đầu</button><button data-f="Con số">Con số</button><button data-f="Danh sách">Danh sách</button><button data-f="Giải thích">Giải thích</button><button data-f="Chữ">Chữ</button><button data-f="Chuyển cảnh">Chuyển cảnh</button><input id="q" placeholder="Tìm: số liệu, chat, logo…" aria-label="Tìm hiệu ứng"></div>
+<header><h1>LNL <b>Motion</b> Effects</h1><p class="sub">48 hiệu ứng motion graphic dựng bằng HyperFrames + GSAP, chữ tiếng Việt, 4 bộ màu. Mỗi hiệu ứng là một dự án HyperFrames chạy ngay: tải thư mục về, sửa chữ, <code>npx hyperframes render</code>.</p></header>
+<div class="bar"><button class="on" data-f="">Tất cả</button><button data-f="Mở đầu">Mở đầu</button><button data-f="Con số">Con số</button><button data-f="Danh sách">Danh sách</button><button data-f="Giải thích">Giải thích</button><button data-f="Chữ">Chữ</button><button data-f="Chuyển cảnh">Chuyển cảnh</button><button data-f="Bất động sản">Bất động sản</button><button data-f="Mạng xã hội">Mạng xã hội</button><button data-f="3D">3D</button><input id="q" placeholder="Tìm: số liệu, chat, logo…" aria-label="Tìm hiệu ứng"></div>
 <main>
 <article data-g="Mở đầu" data-q="tiêu đề xếp tầng ba dòng tiêu đề trượt lên từ sau mặt nạ, dòng nhấn đổi màu, gạch chân chạy ngang rồi nhãn nhỏ bật lên. mở đầu video, giới thiệu chủ đề, tên chương. title-stack">
   <video src="effects/title-stack/preview.mp4" poster="effects/title-stack/poster.jpg" muted loop playsinline preload="none"></video>
@@ -169,6 +169,96 @@ footer{padding:0 6vw 40px;color:#8a93a1;font-size:13px}
   <video src="effects/circle-iris/preview.mp4" poster="effects/circle-iris/poster.jpg" muted loop playsinline preload="none"></video>
   <div class="b"><span class="g">Chuyển cảnh · 3s</span><h3>Chuyển cảnh vòng tròn mở</h3><p>Một chấm màu ở giữa nở thành vòng tròn phủ kín cảnh cũ, rồi vòng thứ hai mở ra từ đó để lộ cảnh mới.</p><p class="u">Dùng khi: Chuyển đoạn mềm mại, chuyển sang chủ đề mới, hiệu ứng &quot;zoom vào&quot;.</p>
   <div class="a"><a href="effects/circle-iris/compositions/fx.html">Mã cảnh</a><a href="effects/circle-iris/spec.md">Hướng dẫn</a><a href="effects/circle-iris/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Bất động sản" data-q="mặt bằng căn hộ tự vẽ nét tường vẽ dần thành mặt bằng căn hộ, từng phòng tô màu lần lượt kèm tên và diện tích, tổng diện tích đếm lên. giới thiệu căn hộ mẫu, layout nhà phố, so sánh loại căn. floorplan-draw">
+  <video src="effects/floorplan-draw/preview.mp4" poster="effects/floorplan-draw/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Bất động sản · 7s</span><h3>Mặt bằng căn hộ tự vẽ</h3><p>Nét tường vẽ dần thành mặt bằng căn hộ, từng phòng tô màu lần lượt kèm tên và diện tích, tổng diện tích đếm lên.</p><p class="u">Dùng khi: Giới thiệu căn hộ mẫu, layout nhà phố, so sánh loại căn.</p>
+  <div class="a"><a href="effects/floorplan-draw/compositions/fx.html">Mã cảnh</a><a href="effects/floorplan-draw/spec.md">Hướng dẫn</a><a href="effects/floorplan-draw/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Bất động sản" data-q="vị trí và bán kính tiện ích bản đồ đường phố cách điệu, ghim dự án cắm xuống giữa, vòng bán kính lan ra, các tiện ích quanh bật nhãn kèm số phút di chuyển. giới thiệu vị trí dự án, kết nối giao thông, tiện ích xung quanh. location-radius">
+  <video src="effects/location-radius/preview.mp4" poster="effects/location-radius/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Bất động sản · 7s</span><h3>Vị trí và bán kính tiện ích</h3><p>Bản đồ đường phố cách điệu, ghim dự án cắm xuống giữa, vòng bán kính lan ra, các tiện ích quanh bật nhãn kèm số phút di chuyển.</p><p class="u">Dùng khi: Giới thiệu vị trí dự án, kết nối giao thông, tiện ích xung quanh.</p>
+  <div class="a"><a href="effects/location-radius/compositions/fx.html">Mã cảnh</a><a href="effects/location-radius/spec.md">Hướng dẫn</a><a href="effects/location-radius/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Bất động sản" data-q="thẻ thông số căn thẻ lớn trượt vào, bốn ô thông số (diện tích, phòng ngủ, hướng, giá) bật lần lượt, số đếm lên, giá cuối nhấn màu. thông tin nhanh một loại căn, một lô đất, một sản phẩm. unit-specs">
+  <video src="effects/unit-specs/preview.mp4" poster="effects/unit-specs/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Bất động sản · 6s</span><h3>Thẻ thông số căn</h3><p>Thẻ lớn trượt vào, bốn ô thông số (diện tích, phòng ngủ, hướng, giá) bật lần lượt, số đếm lên, giá cuối nhấn màu.</p><p class="u">Dùng khi: Thông tin nhanh một loại căn, một lô đất, một sản phẩm.</p>
+  <div class="a"><a href="effects/unit-specs/compositions/fx.html">Mã cảnh</a><a href="effects/unit-specs/spec.md">Hướng dẫn</a><a href="effects/unit-specs/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Bất động sản" data-q="tiến độ thanh toán thanh ngang chia đoạn theo tỉ lệ thanh toán, từng đoạn mọc ra kèm phần trăm và mốc thời gian bên dưới, ưu đãi nổi lên cuối. phương thức thanh toán, trả góp, các đợt đóng tiền. payment-plan">
+  <video src="effects/payment-plan/preview.mp4" poster="effects/payment-plan/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Bất động sản · 6s</span><h3>Tiến độ thanh toán</h3><p>Thanh ngang chia đoạn theo tỉ lệ thanh toán, từng đoạn mọc ra kèm phần trăm và mốc thời gian bên dưới, ưu đãi nổi lên cuối.</p><p class="u">Dùng khi: Phương thức thanh toán, trả góp, các đợt đóng tiền.</p>
+  <div class="a"><a href="effects/payment-plan/compositions/fx.html">Mã cảnh</a><a href="effects/payment-plan/spec.md">Hướng dẫn</a><a href="effects/payment-plan/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Bất động sản" data-q="toà nhà sáng từng tầng khối toà nhà cách điệu, các tầng bật đèn từ dưới lên, một tầng được chọn sáng màu nhấn và kéo nhãn chú thích ra ngoài. giới thiệu toà, tầng đẹp, tầng tiện ích, căn còn trống. tower-floors">
+  <video src="effects/tower-floors/preview.mp4" poster="effects/tower-floors/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Bất động sản · 6s</span><h3>Toà nhà sáng từng tầng</h3><p>Khối toà nhà cách điệu, các tầng bật đèn từ dưới lên, một tầng được chọn sáng màu nhấn và kéo nhãn chú thích ra ngoài.</p><p class="u">Dùng khi: Giới thiệu toà, tầng đẹp, tầng tiện ích, căn còn trống.</p>
+  <div class="a"><a href="effects/tower-floors/compositions/fx.html">Mã cảnh</a><a href="effects/tower-floors/spec.md">Hướng dẫn</a><a href="effects/tower-floors/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Mạng xã hội" data-q="tim nổ và số thích nút tim lớn được bấm, tim co lại rồi bung đỏ, vòng hạt nổ tỏa ra, số lượt thích nhảy lên. kêu gọi thả tim, khoe tương tác, mở đầu video mạng xã hội. like-burst">
+  <video src="effects/like-burst/preview.mp4" poster="effects/like-burst/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Mạng xã hội · 4s</span><h3>Tim nổ và số thích</h3><p>Nút tim lớn được bấm, tim co lại rồi bung đỏ, vòng hạt nổ tỏa ra, số lượt thích nhảy lên.</p><p class="u">Dùng khi: Kêu gọi thả tim, khoe tương tác, mở đầu video mạng xã hội.</p>
+  <div class="a"><a href="effects/like-burst/compositions/fx.html">Mã cảnh</a><a href="effects/like-burst/spec.md">Hướng dẫn</a><a href="effects/like-burst/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Mạng xã hội" data-q="bình luận livestream trôi lên khung livestream có nhãn live, bình luận của người xem lần lượt hiện ở dưới và đẩy các bình luận cũ trôi lên, mờ dần. minh hoạ livestream bán hàng, phản hồi khách, không khí sôi động. live-comments">
+  <video src="effects/live-comments/preview.mp4" poster="effects/live-comments/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Mạng xã hội · 7s</span><h3>Bình luận livestream trôi lên</h3><p>Khung livestream có nhãn LIVE, bình luận của người xem lần lượt hiện ở dưới và đẩy các bình luận cũ trôi lên, mờ dần.</p><p class="u">Dùng khi: Minh hoạ livestream bán hàng, phản hồi khách, không khí sôi động.</p>
+  <div class="a"><a href="effects/live-comments/compositions/fx.html">Mã cảnh</a><a href="effects/live-comments/spec.md">Hướng dẫn</a><a href="effects/live-comments/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Mạng xã hội" data-q="đồng hồ số người theo dõi ảnh đại diện tròn có viền màu, bên cạnh dãy chữ số lăn như đồng hồ công-tơ-mét dừng ở con số mới, nhãn cột mốc bật lên. khoe cột mốc người theo dõi, lượt đăng ký kênh, khách hàng. follower-odometer">
+  <video src="effects/follower-odometer/preview.mp4" poster="effects/follower-odometer/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Mạng xã hội · 5s</span><h3>Đồng hồ số người theo dõi</h3><p>Ảnh đại diện tròn có viền màu, bên cạnh dãy chữ số lăn như đồng hồ công-tơ-mét dừng ở con số mới, nhãn cột mốc bật lên.</p><p class="u">Dùng khi: Khoe cột mốc người theo dõi, lượt đăng ký kênh, khách hàng.</p>
+  <div class="a"><a href="effects/follower-odometer/compositions/fx.html">Mã cảnh</a><a href="effects/follower-odometer/spec.md">Hướng dẫn</a><a href="effects/follower-odometer/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Mạng xã hội" data-q="bài đăng nổi tương tác thẻ bài đăng mạng xã hội trượt vào với ảnh, chú thích và hàng nút; số thích, bình luận, chia sẻ đếm lên lần lượt. khoe bài viral, minh hoạ chiến dịch, kết quả quảng cáo. social-post">
+  <video src="effects/social-post/preview.mp4" poster="effects/social-post/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Mạng xã hội · 6s</span><h3>Bài đăng nổi tương tác</h3><p>Thẻ bài đăng mạng xã hội trượt vào với ảnh, chú thích và hàng nút; số thích, bình luận, chia sẻ đếm lên lần lượt.</p><p class="u">Dùng khi: Khoe bài viral, minh hoạ chiến dịch, kết quả quảng cáo.</p>
+  <div class="a"><a href="effects/social-post/compositions/fx.html">Mã cảnh</a><a href="effects/social-post/spec.md">Hướng dẫn</a><a href="effects/social-post/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="3D" data-q="thẻ lật 3d thẻ lớn nghiêng trong không gian, lật 180 độ quanh trục dọc để lộ mặt sau với câu trả lời, bóng đổ đổi theo góc lật. câu hỏi và đáp án, trước và sau, tiết lộ giá hay quà tặng. card-flip">
+  <video src="effects/card-flip/preview.mp4" poster="effects/card-flip/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">3D · 5s</span><h3>Thẻ lật 3D</h3><p>Thẻ lớn nghiêng trong không gian, lật 180 độ quanh trục dọc để lộ mặt sau với câu trả lời, bóng đổ đổi theo góc lật.</p><p class="u">Dùng khi: Câu hỏi và đáp án, trước và sau, tiết lộ giá hay quà tặng.</p>
+  <div class="a"><a href="effects/card-flip/compositions/fx.html">Mã cảnh</a><a href="effects/card-flip/spec.md">Hướng dẫn</a><a href="effects/card-flip/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="3D" data-q="lớp thẻ tách chiều sâu ba lớp giao diện chồng khít nhau trong góc nghiêng 3d rồi tách ra theo chiều sâu, mỗi lớp lộ nhãn chức năng, sau đó gộp lại. giải thích cấu trúc sản phẩm, các lớp dịch vụ, kiến trúc hệ thống. depth-layers">
+  <video src="effects/depth-layers/preview.mp4" poster="effects/depth-layers/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">3D · 6s</span><h3>Lớp thẻ tách chiều sâu</h3><p>Ba lớp giao diện chồng khít nhau trong góc nghiêng 3D rồi tách ra theo chiều sâu, mỗi lớp lộ nhãn chức năng, sau đó gộp lại.</p><p class="u">Dùng khi: Giải thích cấu trúc sản phẩm, các lớp dịch vụ, kiến trúc hệ thống.</p>
+  <div class="a"><a href="effects/depth-layers/compositions/fx.html">Mã cảnh</a><a href="effects/depth-layers/spec.md">Hướng dẫn</a><a href="effects/depth-layers/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="3D" data-q="khối lập phương đổi chữ một dải khối lập phương xoay từng mặt, mỗi lần lật đổi sang một từ mới, câu dẫn bên trái đứng yên. liệt kê nhiều lợi ích, nhiều đối tượng khách, &quot;dành cho …&quot;. cube-words">
+  <video src="effects/cube-words/preview.mp4" poster="effects/cube-words/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">3D · 6s</span><h3>Khối lập phương đổi chữ</h3><p>Một dải khối lập phương xoay từng mặt, mỗi lần lật đổi sang một từ mới, câu dẫn bên trái đứng yên.</p><p class="u">Dùng khi: Liệt kê nhiều lợi ích, nhiều đối tượng khách, &quot;dành cho …&quot;.</p>
+  <div class="a"><a href="effects/cube-words/compositions/fx.html">Mã cảnh</a><a href="effects/cube-words/spec.md">Hướng dẫn</a><a href="effects/cube-words/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Chữ" data-q="ký tự bay về xếp chữ các ký tự của từ khoá xuất phát từ những vị trí rải khắp khung hình, xoay và bay về xếp thành chữ hoàn chỉnh. tên thương hiệu, từ khoá chủ đề, khoảnh khắc chốt. letter-assemble">
+  <video src="effects/letter-assemble/preview.mp4" poster="effects/letter-assemble/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Chữ · 5s</span><h3>Ký tự bay về xếp chữ</h3><p>Các ký tự của từ khoá xuất phát từ những vị trí rải khắp khung hình, xoay và bay về xếp thành chữ hoàn chỉnh.</p><p class="u">Dùng khi: Tên thương hiệu, từ khoá chủ đề, khoảnh khắc chốt.</p>
+  <div class="a"><a href="effects/letter-assemble/compositions/fx.html">Mã cảnh</a><a href="effects/letter-assemble/spec.md">Hướng dẫn</a><a href="effects/letter-assemble/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Chữ" data-q="hai dải chữ chạy ngược chiều hai dải chữ lớn chạy ngang ngược chiều nhau, dải dưới viền rỗng, ở giữa bật lên một khẩu hiệu đứng yên. nền chữ động cho phần chuyển đoạn, khẩu hiệu thương hiệu, poster động. marquee-rows">
+  <video src="effects/marquee-rows/preview.mp4" poster="effects/marquee-rows/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Chữ · 6s</span><h3>Hai dải chữ chạy ngược chiều</h3><p>Hai dải chữ lớn chạy ngang ngược chiều nhau, dải dưới viền rỗng, ở giữa bật lên một khẩu hiệu đứng yên.</p><p class="u">Dùng khi: Nền chữ động cho phần chuyển đoạn, khẩu hiệu thương hiệu, poster động.</p>
+  <div class="a"><a href="effects/marquee-rows/compositions/fx.html">Mã cảnh</a><a href="effects/marquee-rows/spec.md">Hướng dẫn</a><a href="effects/marquee-rows/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Chuyển cảnh" data-q="chuyển cảnh sọc chéo các sọc chéo hai màu quét ngang khung hình lệch nhịp, phủ kín cảnh cũ rồi rút đi để lộ cảnh mới. chuyển đoạn năng động, video thể thao, quảng cáo nhịp nhanh. stripe-wipe">
+  <video src="effects/stripe-wipe/preview.mp4" poster="effects/stripe-wipe/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Chuyển cảnh · 3s</span><h3>Chuyển cảnh sọc chéo</h3><p>Các sọc chéo hai màu quét ngang khung hình lệch nhịp, phủ kín cảnh cũ rồi rút đi để lộ cảnh mới.</p><p class="u">Dùng khi: Chuyển đoạn năng động, video thể thao, quảng cáo nhịp nhanh.</p>
+  <div class="a"><a href="effects/stripe-wipe/compositions/fx.html">Mã cảnh</a><a href="effects/stripe-wipe/spec.md">Hướng dẫn</a><a href="effects/stripe-wipe/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Chuyển cảnh" data-q="chuyển cảnh phóng xuyên cảnh cũ phóng to lao về phía máy quay và nhoè đi, cảnh mới từ xa thu vào đúng khung, tạo cảm giác lao xuyên qua. chuyển đoạn mạnh, chuyển từ tổng quan vào chi tiết. zoom-push">
+  <video src="effects/zoom-push/preview.mp4" poster="effects/zoom-push/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Chuyển cảnh · 3s</span><h3>Chuyển cảnh phóng xuyên</h3><p>Cảnh cũ phóng to lao về phía máy quay và nhoè đi, cảnh mới từ xa thu vào đúng khung, tạo cảm giác lao xuyên qua.</p><p class="u">Dùng khi: Chuyển đoạn mạnh, chuyển từ tổng quan vào chi tiết.</p>
+  <div class="a"><a href="effects/zoom-push/compositions/fx.html">Mã cảnh</a><a href="effects/zoom-push/spec.md">Hướng dẫn</a><a href="effects/zoom-push/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Giải thích" data-q="thanh tiến trình kèm việc thanh tải chạy từ 0 đến 100%, mỗi khi qua một mốc thì một việc trong danh sách đổi sang trạng thái xong, cuối cùng báo hoàn tất. minh hoạ quy trình tự động, ai đang làm việc, các bước xử lý đơn. task-progress">
+  <video src="effects/task-progress/preview.mp4" poster="effects/task-progress/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Giải thích · 6s</span><h3>Thanh tiến trình kèm việc</h3><p>Thanh tải chạy từ 0 đến 100%, mỗi khi qua một mốc thì một việc trong danh sách đổi sang trạng thái xong, cuối cùng báo hoàn tất.</p><p class="u">Dùng khi: Minh hoạ quy trình tự động, AI đang làm việc, các bước xử lý đơn.</p>
+  <div class="a"><a href="effects/task-progress/compositions/fx.html">Mã cảnh</a><a href="effects/task-progress/spec.md">Hướng dẫn</a><a href="effects/task-progress/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Giải thích" data-q="hai vòng giao nhau hai vòng tròn mờ trượt vào từ hai bên kèm nhãn, chồng lên nhau, phần giao sáng màu nhấn và hiện từ khoá kết luận. điểm chung của hai nhóm, sản phẩm đáp ứng hai nhu cầu, công thức a + b. venn-overlap">
+  <video src="effects/venn-overlap/preview.mp4" poster="effects/venn-overlap/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Giải thích · 6s</span><h3>Hai vòng giao nhau</h3><p>Hai vòng tròn mờ trượt vào từ hai bên kèm nhãn, chồng lên nhau, phần giao sáng màu nhấn và hiện từ khoá kết luận.</p><p class="u">Dùng khi: Điểm chung của hai nhóm, sản phẩm đáp ứng hai nhu cầu, công thức A + B.</p>
+  <div class="a"><a href="effects/venn-overlap/compositions/fx.html">Mã cảnh</a><a href="effects/venn-overlap/spec.md">Hướng dẫn</a><a href="effects/venn-overlap/preview.mp4" download>Tải video mẫu</a></div></div>
 </article>
 </main>
 <footer>© 2026 LNL Motion Effects. Mã nguồn: <a style="color:#ff8a63" href="https://github.com/luanlengoc1991-art/lnl-motion-effects">GitHub</a>.</footer>

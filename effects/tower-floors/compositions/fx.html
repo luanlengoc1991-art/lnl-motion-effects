@@ -1,0 +1,48 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#tw{position:absolute;left:640px;top:100px;width:420px;height:880px;border-radius:18px 18px 0 0;background:#151a22;border:3px solid #ffffff1c;padding:18px;display:flex;flex-direction:column-reverse;gap:8px}
+.fl{flex:1;border-radius:6px;background:#ffffff0c;display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding:6px}
+.fl i{border-radius:3px;background:#ffffff10}
+#cl{position:absolute;left:1060px;top:0;height:6px;background:var(--accent);transform-origin:left center}
+#lb{position:absolute;left:1260px;padding:28px 40px;border-radius:30px;background:var(--accent);color:#111}
+#lb b{display:block;font-family:"BVP";font-weight:900;font-size:56px}
+#lb span{display:block;font-family:"BVP";font-weight:700;font-size:32px}
+#nm{position:absolute;left:180px;top:420px;font-family:"BVP";font-weight:900;font-size:84px;line-height:1.1;color:var(--fg)}
+#nm small{display:block;font-family:"JBM";font-weight:700;font-size:30px;letter-spacing:.2em;color:var(--muted)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="nm"><small>TOÀ</small><span data-var-text="toa">Sky A</span></div>
+<div id="tw"><div class="fl" id="f0"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f1"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f2"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f3"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f4"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f5"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f6"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f7"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f8"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f9"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f10"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f11"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f12"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f13"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f14"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f15"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f16"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f17"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f18"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f19"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f20"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fl" id="f21"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+<div id="cl"></div><div id="lb"><b data-var-text="tang">Tầng 18</b><span data-var-text="mota">Hồ bơi vô cực · Sky bar</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const N=22,sel=17,fl=$$(".fl");
+tl.fromTo("#tw",{opacity:0,y:200},{opacity:1,y:0,duration:.8,ease:"expo.out"},.1);
+fl.forEach((f,i)=>tl.to(f.querySelectorAll("i"),{background:"color-mix(in srgb,var(--accent2) 70%,transparent)",duration:.12,stagger:.01},.8+i*.07));
+const y=100+18+(N-1-sel)*((880-36-8*(N-1))/N+8)+((880-36-8*(N-1))/N)/2;
+tl.set("#cl",{top:y-3},0);tl.set("#lb",{top:y-80},0);
+tl.to(fl[sel],{background:"var(--accent)",duration:.3},2.6);
+tl.fromTo("#cl",{scaleX:0,width:200},{scaleX:1,duration:.4,ease:"power3.out"},2.8);
+tl.fromTo("#lb",{opacity:0,x:-30},{opacity:1,x:0,duration:.5,ease:"back.out(1.8)"},3.1);
+rise("#nm",.3);
+out("#tw,#cl,#lb,#nm",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

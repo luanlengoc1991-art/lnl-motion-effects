@@ -1,0 +1,43 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#uc{position:absolute;left:240px;top:170px;width:1440px;height:740px;border-radius:52px;background:var(--card);border:2px solid #ffffff12;padding:64px}
+#uc h2{margin:0;font-family:"BVP";font-weight:900;font-size:76px;color:var(--fg)}
+#uc h2 em{font-style:normal;color:var(--accent)}
+.gd{position:absolute;left:64px;right:64px;top:250px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.sp{height:400px;border-radius:36px;background:#ffffff08;border:2px solid #ffffff10;padding:36px 30px;display:flex;flex-direction:column;justify-content:flex-end}
+.sp small{font-family:"JBM";font-weight:700;font-size:28px;letter-spacing:.14em;color:var(--muted)}
+.sp b{margin-top:14px;font-family:"BVP";font-weight:900;font-size:52px;line-height:1.1;color:var(--fg);white-space:nowrap}
+.sp.hi{background:var(--accent)}.sp.hi small{color:#111b}.sp.hi b{color:#111}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="uc"><h2 data-var-text="tieude">Căn <em>B-12.08</em> · View sông</h2><div class="gd">
+<div class="sp" id="s0"><small>DIỆN TÍCH</small><b id="n0">0</b></div><div class="sp" id="s1"><small>PHÒNG NGỦ</small><b id="n1">0</b></div>
+<div class="sp" id="s2"><small>HƯỚNG</small><b data-var-text="huong">Đông Nam</b></div><div class="sp hi" id="s3"><small>GIÁ TỪ</small><b id="n3">0</b></div></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+tl.fromTo("#uc",{opacity:0,y:120},{opacity:1,y:0,duration:.8,ease:"expo.out"},.1);
+tl.fromTo("#uc h2",{opacity:0,x:-40},{opacity:1,x:0,duration:.6,ease:"power3.out"},.5);
+[0,1,2,3].forEach(i=>tl.fromTo("#s"+i,{opacity:0,y:60,scale:.92},{opacity:1,y:0,scale:1,duration:.55,ease:"back.out(1.8)"},.9+i*.25));
+count("#n0",74.5,1,1.4,1,""," m²");count("#n1",2,1.25,.8);count("#n3",3.6,1.75,1.4,1,""," tỷ");
+tl.fromTo("#s3",{scale:1},{scale:1.05,duration:.3,yoyo:true,repeat:1,ease:"power2.out"},3.4);
+out("#uc",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,50 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#fp{position:absolute;left:220px;top:150px;width:980px;height:780px}
+#fp .wl{fill:none;stroke:var(--fg);stroke-width:10;stroke-linecap:square}
+#fp .rm{opacity:0}
+.rl{position:absolute;text-align:center;font-family:"BVP";font-weight:800;font-size:30px;color:var(--fg)}
+.rl small{display:block;font-family:"JBM";font-weight:700;font-size:30px;color:var(--fg)}
+#tot{position:absolute;left:1300px;top:330px}
+#tot small{display:block;font-family:"JBM";font-weight:700;font-size:28px;letter-spacing:.2em;color:var(--muted)}
+#tot b{display:block;font-family:"BVP";font-weight:900;font-size:150px;line-height:1.1;color:var(--accent)}
+#tot span{display:block;font-family:"BVP";font-weight:700;font-size:40px;color:var(--fg)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<svg id="fp" viewBox="0 0 980 780">
+<rect class="rm" id="r0" x="10" y="10" width="560" height="440" fill="color-mix(in srgb,var(--accent) 30%,transparent)"/>
+<rect class="rm" id="r1" x="570" y="10" width="400" height="330" fill="color-mix(in srgb,var(--accent2) 30%,transparent)"/>
+<rect class="rm" id="r2" x="570" y="340" width="400" height="430" fill="color-mix(in srgb,var(--accent2) 22%,transparent)"/>
+<rect class="rm" id="r3" x="10" y="450" width="300" height="320" fill="color-mix(in srgb,var(--accent) 20%,transparent)"/>
+<rect class="rm" id="r4" x="310" y="450" width="260" height="320" fill="#ffffff14"/>
+<path class="wl" id="w0" d="M10 10 H970 V770 H10 Z"/>
+<path class="wl" id="w1" d="M570 10 V250 M570 330 V770 M570 340 H860"/>
+<path class="wl" id="w2" d="M10 450 H200 M280 450 H570 M310 450 V770"/></svg>
+<div class="rl" id="l0" style="left:350px;top:340px;width:320px">Phòng khách + bếp<small>32 m²</small></div><div class="rl" id="l1" style="left:830px;top:285px;width:320px">Phòng ngủ 1<small>15 m²</small></div><div class="rl" id="l2" style="left:830px;top:665px;width:320px">Phòng ngủ 2<small>18 m²</small></div><div class="rl" id="l3" style="left:220px;top:720px;width:320px">Ban công<small>6 m²</small></div><div class="rl" id="l4" style="left:500px;top:720px;width:320px">WC<small>5 m²</small></div>
+<div id="tot"><small>DIỆN TÍCH</small><b id="tn">0</b><span data-var-text="loaican">Căn 2 phòng ngủ</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+["#w0","#w1","#w2"].forEach((s,i)=>{const p=$(s),L=p.getTotalLength();p.style.strokeDasharray=L;tl.fromTo(p,{strokeDashoffset:L},{strokeDashoffset:0,duration:1.1,ease:"power2.inOut"},.2+i*.45);});
+[0,1,2,3,4].forEach(i=>{tl.fromTo("#r"+i,{opacity:0},{opacity:1,duration:.4},1.8+i*.45);tl.fromTo("#l"+i,{opacity:0,y:20},{opacity:1,y:0,duration:.4,ease:"back.out(2)"},1.9+i*.45);});
+rise("#tot small,#tot span",1.6,.1);tl.fromTo("#tot b",{opacity:0},{opacity:1,duration:.2},1.8);count("#tn",76,1.8,2.4,0,""," m²");
+out("#fp,.rl,#tot",6.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,41 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#hd{position:absolute;left:200px;top:180px;font-family:"BVP";font-weight:900;font-size:72px;color:var(--fg)}
+#bar{position:absolute;left:200px;top:400px;width:1520px;height:120px;display:flex;gap:10px}
+.sg{height:100%;border-radius:28px;display:flex;align-items:center;justify-content:center;font-family:"BVP";font-weight:900;font-size:54px;color:#111;transform-origin:left center}
+.sg:nth-child(1){background:var(--accent)}.sg:nth-child(2){background:var(--accent2)}.sg:nth-child(3){background:#9aa7b8}
+.mk{position:absolute;top:560px;font-family:"BVP";font-weight:700;font-size:34px;color:var(--fg)}
+.mk small{display:block;font-family:"BVP";font-weight:600;font-size:28px;color:var(--muted)}
+#gift{position:absolute;left:200px;top:760px;padding:24px 40px;border-radius:28px;border:3px dashed var(--accent2);font-family:"BVP";font-weight:800;font-size:40px;color:var(--accent2)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="hd" data-var-text="tieude">Thanh toán linh hoạt</div>
+<div id="bar"><div class="sg" id="g0" style="flex:30">30%</div><div class="sg" id="g1" style="flex:40">40%</div><div class="sg" id="g2" style="flex:30">30%</div></div>
+<div class="mk" id="m0" style="left:200px">Ký hợp đồng<small>Tháng 1</small></div><div class="mk" id="m1" style="left:666px">Trong xây dựng<small>Tháng 2 – 18</small></div><div class="mk" id="m2" style="left:1284px">Nhận nhà<small>Quý 4/2027</small></div>
+<div id="gift" data-var-text="uudai">Tặng gói nội thất 200 triệu khi thanh toán sớm</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+rise("#hd",.1);
+[0,1,2].forEach(i=>{tl.fromTo("#g"+i,{scaleX:0},{scaleX:1,duration:.7,ease:"expo.out"},.6+i*.55);tl.fromTo("#m"+i,{opacity:0,y:20},{opacity:1,y:0,duration:.45,ease:"power3.out"},.9+i*.55);});
+tl.fromTo("#gift",{opacity:0,scale:.85},{opacity:1,scale:1,duration:.6,ease:"back.out(2)"},2.7);
+out("#hd,#bar,.mk,#gift",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

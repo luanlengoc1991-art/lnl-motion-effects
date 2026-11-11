@@ -1,6 +1,6 @@
 # LNL Motion Effects
 
-30 hiệu ứng motion graphic dựng bằng **HyperFrames + GSAP**, chữ tiếng Việt (Be Vietnam Pro), 4 bộ màu dựng sẵn. Tự thiết kế và viết mới.
+48 hiệu ứng motion graphic dựng bằng **HyperFrames + GSAP**, chữ tiếng Việt (Be Vietnam Pro), 4 bộ màu dựng sẵn. Tự thiết kế và viết mới.
 
 Xem online: https://effects.luangroup.asia/
 
@@ -61,6 +61,8 @@ Viết thêm một mục trong `tools/effects.mjs`, rồi `node tools/build.mjs`
 | [<img src="effects/quote-card/poster.jpg" width="260">](effects/quote-card/preview.mp4) | **[Thẻ trích dẫn](effects/quote-card/)**<br>Dấu ngoặc kép lớn bật vào, câu trích dẫn hiện theo từng dòng, gạch nhấn chạy dưới tên người nói.<br><sub>Dùng khi: Lời khách hàng, câu nói nổi tiếng, nhận xét chuyên gia.</sub> | 6s |
 | [<img src="effects/notif-stack/poster.jpg" width="260">](effects/notif-stack/preview.mp4) | **[Thông báo đổ dồn](effects/notif-stack/)**<br>Các thông báo kiểu điện thoại rơi xuống xếp chồng, thông báo cũ lùi sâu và mờ dần, số đếm trên biểu tượng tăng lên.<br><sub>Dùng khi: Đơn hàng về liên tục, tin nhắn khách hàng, hiệu ứng "bùng nổ" sau chiến dịch.</sub> | 6s |
 | [<img src="effects/search-suggest/poster.jpg" width="260">](effects/search-suggest/preview.mp4) | **[Ô tìm kiếm gợi ý](effects/search-suggest/)**<br>Ô tìm kiếm lớn, chữ gõ từng ký tự, danh sách gợi ý thả xuống, dòng phù hợp sáng lên rồi được chọn.<br><sub>Dùng khi: Nói về từ khoá khách tìm, SEO, minh hoạ cách tra cứu.</sub> | 6s |
+| [<img src="effects/task-progress/poster.jpg" width="260">](effects/task-progress/preview.mp4) | **[Thanh tiến trình kèm việc](effects/task-progress/)**<br>Thanh tải chạy từ 0 đến 100%, mỗi khi qua một mốc thì một việc trong danh sách đổi sang trạng thái xong, cuối cùng báo hoàn tất.<br><sub>Dùng khi: Minh hoạ quy trình tự động, AI đang làm việc, các bước xử lý đơn.</sub> | 6s |
+| [<img src="effects/venn-overlap/poster.jpg" width="260">](effects/venn-overlap/preview.mp4) | **[Hai vòng giao nhau](effects/venn-overlap/)**<br>Hai vòng tròn mờ trượt vào từ hai bên kèm nhãn, chồng lên nhau, phần giao sáng màu nhấn và hiện từ khoá kết luận.<br><sub>Dùng khi: Điểm chung của hai nhóm, sản phẩm đáp ứng hai nhu cầu, công thức A + B.</sub> | 6s |
 
 ## Chữ
 
@@ -70,6 +72,8 @@ Viết thêm một mục trong `tools/effects.mjs`, rồi `node tools/build.mjs`
 | [<img src="effects/marker-highlight/poster.jpg" width="260">](effects/marker-highlight/preview.mp4) | **[Bút dạ quang tô từ khoá](effects/marker-highlight/)**<br>Đoạn văn hiện ra, nét bút dạ quang quét lần lượt qua các từ khoá theo nhịp đọc, đoạn còn lại mờ đi.<br><sub>Dùng khi: Nhấn ý chính trong trích dẫn, điều khoản, đoạn giải thích.</sub> | 6s |
 | [<img src="effects/type-correct/poster.jpg" width="260">](effects/type-correct/preview.mp4) | **[Gõ chữ rồi sửa từ](effects/type-correct/)**<br>Dòng chữ gõ như máy đánh chữ, con trỏ dừng, xoá lùi một từ rồi gõ lại từ đúng với màu nhấn.<br><sub>Dùng khi: Đổi góc nhìn ("không phải… mà là…"), chơi chữ, câu hook gây tò mò.</sub> | 6s |
 | [<img src="effects/outline-fill/poster.jpg" width="260">](effects/outline-fill/preview.mp4) | **[Chữ viền đổ đầy màu](effects/outline-fill/)**<br>Chữ lớn chỉ có viền vẽ ra trước, sau đó màu đổ đầy từ dưới lên như nước dâng, dòng phụ hiện bên dưới.<br><sub>Dùng khi: Tiêu đề chương, con số lớn, tên thương hiệu.</sub> | 5s |
+| [<img src="effects/letter-assemble/poster.jpg" width="260">](effects/letter-assemble/preview.mp4) | **[Ký tự bay về xếp chữ](effects/letter-assemble/)**<br>Các ký tự của từ khoá xuất phát từ những vị trí rải khắp khung hình, xoay và bay về xếp thành chữ hoàn chỉnh.<br><sub>Dùng khi: Tên thương hiệu, từ khoá chủ đề, khoảnh khắc chốt.</sub> | 5s |
+| [<img src="effects/marquee-rows/poster.jpg" width="260">](effects/marquee-rows/preview.mp4) | **[Hai dải chữ chạy ngược chiều](effects/marquee-rows/)**<br>Hai dải chữ lớn chạy ngang ngược chiều nhau, dải dưới viền rỗng, ở giữa bật lên một khẩu hiệu đứng yên.<br><sub>Dùng khi: Nền chữ động cho phần chuyển đoạn, khẩu hiệu thương hiệu, poster động.</sub> | 6s |
 
 ## Chuyển cảnh
 
@@ -77,6 +81,35 @@ Viết thêm một mục trong `tools/effects.mjs`, rồi `node tools/build.mjs`
 |---|---|---|
 | [<img src="effects/tile-wipe/poster.jpg" width="260">](effects/tile-wipe/preview.mp4) | **[Chuyển cảnh ô lưới lật](effects/tile-wipe/)**<br>Màn hình chia lưới 8×5, các ô lật theo đường chéo để che cảnh cũ rồi lật tiếp để lộ cảnh mới.<br><sub>Dùng khi: Chuyển giữa hai đoạn, chuyển sang chương mới.</sub> | 3s |
 | [<img src="effects/circle-iris/poster.jpg" width="260">](effects/circle-iris/preview.mp4) | **[Chuyển cảnh vòng tròn mở](effects/circle-iris/)**<br>Một chấm màu ở giữa nở thành vòng tròn phủ kín cảnh cũ, rồi vòng thứ hai mở ra từ đó để lộ cảnh mới.<br><sub>Dùng khi: Chuyển đoạn mềm mại, chuyển sang chủ đề mới, hiệu ứng "zoom vào".</sub> | 3s |
+| [<img src="effects/stripe-wipe/poster.jpg" width="260">](effects/stripe-wipe/preview.mp4) | **[Chuyển cảnh sọc chéo](effects/stripe-wipe/)**<br>Các sọc chéo hai màu quét ngang khung hình lệch nhịp, phủ kín cảnh cũ rồi rút đi để lộ cảnh mới.<br><sub>Dùng khi: Chuyển đoạn năng động, video thể thao, quảng cáo nhịp nhanh.</sub> | 3s |
+| [<img src="effects/zoom-push/poster.jpg" width="260">](effects/zoom-push/preview.mp4) | **[Chuyển cảnh phóng xuyên](effects/zoom-push/)**<br>Cảnh cũ phóng to lao về phía máy quay và nhoè đi, cảnh mới từ xa thu vào đúng khung, tạo cảm giác lao xuyên qua.<br><sub>Dùng khi: Chuyển đoạn mạnh, chuyển từ tổng quan vào chi tiết.</sub> | 3s |
+
+## Bất động sản
+
+| Xem trước | Hiệu ứng | Thời lượng |
+|---|---|---|
+| [<img src="effects/floorplan-draw/poster.jpg" width="260">](effects/floorplan-draw/preview.mp4) | **[Mặt bằng căn hộ tự vẽ](effects/floorplan-draw/)**<br>Nét tường vẽ dần thành mặt bằng căn hộ, từng phòng tô màu lần lượt kèm tên và diện tích, tổng diện tích đếm lên.<br><sub>Dùng khi: Giới thiệu căn hộ mẫu, layout nhà phố, so sánh loại căn.</sub> | 7s |
+| [<img src="effects/location-radius/poster.jpg" width="260">](effects/location-radius/preview.mp4) | **[Vị trí và bán kính tiện ích](effects/location-radius/)**<br>Bản đồ đường phố cách điệu, ghim dự án cắm xuống giữa, vòng bán kính lan ra, các tiện ích quanh bật nhãn kèm số phút di chuyển.<br><sub>Dùng khi: Giới thiệu vị trí dự án, kết nối giao thông, tiện ích xung quanh.</sub> | 7s |
+| [<img src="effects/unit-specs/poster.jpg" width="260">](effects/unit-specs/preview.mp4) | **[Thẻ thông số căn](effects/unit-specs/)**<br>Thẻ lớn trượt vào, bốn ô thông số (diện tích, phòng ngủ, hướng, giá) bật lần lượt, số đếm lên, giá cuối nhấn màu.<br><sub>Dùng khi: Thông tin nhanh một loại căn, một lô đất, một sản phẩm.</sub> | 6s |
+| [<img src="effects/payment-plan/poster.jpg" width="260">](effects/payment-plan/preview.mp4) | **[Tiến độ thanh toán](effects/payment-plan/)**<br>Thanh ngang chia đoạn theo tỉ lệ thanh toán, từng đoạn mọc ra kèm phần trăm và mốc thời gian bên dưới, ưu đãi nổi lên cuối.<br><sub>Dùng khi: Phương thức thanh toán, trả góp, các đợt đóng tiền.</sub> | 6s |
+| [<img src="effects/tower-floors/poster.jpg" width="260">](effects/tower-floors/preview.mp4) | **[Toà nhà sáng từng tầng](effects/tower-floors/)**<br>Khối toà nhà cách điệu, các tầng bật đèn từ dưới lên, một tầng được chọn sáng màu nhấn và kéo nhãn chú thích ra ngoài.<br><sub>Dùng khi: Giới thiệu toà, tầng đẹp, tầng tiện ích, căn còn trống.</sub> | 6s |
+
+## Mạng xã hội
+
+| Xem trước | Hiệu ứng | Thời lượng |
+|---|---|---|
+| [<img src="effects/like-burst/poster.jpg" width="260">](effects/like-burst/preview.mp4) | **[Tim nổ và số thích](effects/like-burst/)**<br>Nút tim lớn được bấm, tim co lại rồi bung đỏ, vòng hạt nổ tỏa ra, số lượt thích nhảy lên.<br><sub>Dùng khi: Kêu gọi thả tim, khoe tương tác, mở đầu video mạng xã hội.</sub> | 4s |
+| [<img src="effects/live-comments/poster.jpg" width="260">](effects/live-comments/preview.mp4) | **[Bình luận livestream trôi lên](effects/live-comments/)**<br>Khung livestream có nhãn LIVE, bình luận của người xem lần lượt hiện ở dưới và đẩy các bình luận cũ trôi lên, mờ dần.<br><sub>Dùng khi: Minh hoạ livestream bán hàng, phản hồi khách, không khí sôi động.</sub> | 7s |
+| [<img src="effects/follower-odometer/poster.jpg" width="260">](effects/follower-odometer/preview.mp4) | **[Đồng hồ số người theo dõi](effects/follower-odometer/)**<br>Ảnh đại diện tròn có viền màu, bên cạnh dãy chữ số lăn như đồng hồ công-tơ-mét dừng ở con số mới, nhãn cột mốc bật lên.<br><sub>Dùng khi: Khoe cột mốc người theo dõi, lượt đăng ký kênh, khách hàng.</sub> | 5s |
+| [<img src="effects/social-post/poster.jpg" width="260">](effects/social-post/preview.mp4) | **[Bài đăng nổi tương tác](effects/social-post/)**<br>Thẻ bài đăng mạng xã hội trượt vào với ảnh, chú thích và hàng nút; số thích, bình luận, chia sẻ đếm lên lần lượt.<br><sub>Dùng khi: Khoe bài viral, minh hoạ chiến dịch, kết quả quảng cáo.</sub> | 6s |
+
+## 3D
+
+| Xem trước | Hiệu ứng | Thời lượng |
+|---|---|---|
+| [<img src="effects/card-flip/poster.jpg" width="260">](effects/card-flip/preview.mp4) | **[Thẻ lật 3D](effects/card-flip/)**<br>Thẻ lớn nghiêng trong không gian, lật 180 độ quanh trục dọc để lộ mặt sau với câu trả lời, bóng đổ đổi theo góc lật.<br><sub>Dùng khi: Câu hỏi và đáp án, trước và sau, tiết lộ giá hay quà tặng.</sub> | 5s |
+| [<img src="effects/depth-layers/poster.jpg" width="260">](effects/depth-layers/preview.mp4) | **[Lớp thẻ tách chiều sâu](effects/depth-layers/)**<br>Ba lớp giao diện chồng khít nhau trong góc nghiêng 3D rồi tách ra theo chiều sâu, mỗi lớp lộ nhãn chức năng, sau đó gộp lại.<br><sub>Dùng khi: Giải thích cấu trúc sản phẩm, các lớp dịch vụ, kiến trúc hệ thống.</sub> | 6s |
+| [<img src="effects/cube-words/poster.jpg" width="260">](effects/cube-words/preview.mp4) | **[Khối lập phương đổi chữ](effects/cube-words/)**<br>Một dải khối lập phương xoay từng mặt, mỗi lần lật đổi sang một từ mới, câu dẫn bên trái đứng yên.<br><sub>Dùng khi: Liệt kê nhiều lợi ích, nhiều đối tượng khách, "dành cho …".</sub> | 6s |
 
 ## Bộ màu
 

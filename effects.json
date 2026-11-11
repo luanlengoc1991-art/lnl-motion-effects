@@ -238,5 +238,149 @@
   "duration": 3,
   "desc": "Một chấm màu ở giữa nở thành vòng tròn phủ kín cảnh cũ, rồi vòng thứ hai mở ra từ đó để lộ cảnh mới.",
   "use": "Chuyển đoạn mềm mại, chuyển sang chủ đề mới, hiệu ứng \"zoom vào\"."
+ },
+ {
+  "slug": "floorplan-draw",
+  "name": "Mặt bằng căn hộ tự vẽ",
+  "group": "Bất động sản",
+  "duration": 7,
+  "desc": "Nét tường vẽ dần thành mặt bằng căn hộ, từng phòng tô màu lần lượt kèm tên và diện tích, tổng diện tích đếm lên.",
+  "use": "Giới thiệu căn hộ mẫu, layout nhà phố, so sánh loại căn."
+ },
+ {
+  "slug": "location-radius",
+  "name": "Vị trí và bán kính tiện ích",
+  "group": "Bất động sản",
+  "duration": 7,
+  "desc": "Bản đồ đường phố cách điệu, ghim dự án cắm xuống giữa, vòng bán kính lan ra, các tiện ích quanh bật nhãn kèm số phút di chuyển.",
+  "use": "Giới thiệu vị trí dự án, kết nối giao thông, tiện ích xung quanh."
+ },
+ {
+  "slug": "unit-specs",
+  "name": "Thẻ thông số căn",
+  "group": "Bất động sản",
+  "duration": 6,
+  "desc": "Thẻ lớn trượt vào, bốn ô thông số (diện tích, phòng ngủ, hướng, giá) bật lần lượt, số đếm lên, giá cuối nhấn màu.",
+  "use": "Thông tin nhanh một loại căn, một lô đất, một sản phẩm."
+ },
+ {
+  "slug": "payment-plan",
+  "name": "Tiến độ thanh toán",
+  "group": "Bất động sản",
+  "duration": 6,
+  "desc": "Thanh ngang chia đoạn theo tỉ lệ thanh toán, từng đoạn mọc ra kèm phần trăm và mốc thời gian bên dưới, ưu đãi nổi lên cuối.",
+  "use": "Phương thức thanh toán, trả góp, các đợt đóng tiền."
+ },
+ {
+  "slug": "tower-floors",
+  "name": "Toà nhà sáng từng tầng",
+  "group": "Bất động sản",
+  "duration": 6,
+  "desc": "Khối toà nhà cách điệu, các tầng bật đèn từ dưới lên, một tầng được chọn sáng màu nhấn và kéo nhãn chú thích ra ngoài.",
+  "use": "Giới thiệu toà, tầng đẹp, tầng tiện ích, căn còn trống."
+ },
+ {
+  "slug": "like-burst",
+  "name": "Tim nổ và số thích",
+  "group": "Mạng xã hội",
+  "duration": 4,
+  "desc": "Nút tim lớn được bấm, tim co lại rồi bung đỏ, vòng hạt nổ tỏa ra, số lượt thích nhảy lên.",
+  "use": "Kêu gọi thả tim, khoe tương tác, mở đầu video mạng xã hội."
+ },
+ {
+  "slug": "live-comments",
+  "name": "Bình luận livestream trôi lên",
+  "group": "Mạng xã hội",
+  "duration": 7,
+  "desc": "Khung livestream có nhãn LIVE, bình luận của người xem lần lượt hiện ở dưới và đẩy các bình luận cũ trôi lên, mờ dần.",
+  "use": "Minh hoạ livestream bán hàng, phản hồi khách, không khí sôi động."
+ },
+ {
+  "slug": "follower-odometer",
+  "name": "Đồng hồ số người theo dõi",
+  "group": "Mạng xã hội",
+  "duration": 5,
+  "desc": "Ảnh đại diện tròn có viền màu, bên cạnh dãy chữ số lăn như đồng hồ công-tơ-mét dừng ở con số mới, nhãn cột mốc bật lên.",
+  "use": "Khoe cột mốc người theo dõi, lượt đăng ký kênh, khách hàng."
+ },
+ {
+  "slug": "social-post",
+  "name": "Bài đăng nổi tương tác",
+  "group": "Mạng xã hội",
+  "duration": 6,
+  "desc": "Thẻ bài đăng mạng xã hội trượt vào với ảnh, chú thích và hàng nút; số thích, bình luận, chia sẻ đếm lên lần lượt.",
+  "use": "Khoe bài viral, minh hoạ chiến dịch, kết quả quảng cáo."
+ },
+ {
+  "slug": "card-flip",
+  "name": "Thẻ lật 3D",
+  "group": "3D",
+  "duration": 5,
+  "desc": "Thẻ lớn nghiêng trong không gian, lật 180 độ quanh trục dọc để lộ mặt sau với câu trả lời, bóng đổ đổi theo góc lật.",
+  "use": "Câu hỏi và đáp án, trước và sau, tiết lộ giá hay quà tặng."
+ },
+ {
+  "slug": "depth-layers",
+  "name": "Lớp thẻ tách chiều sâu",
+  "group": "3D",
+  "duration": 6,
+  "desc": "Ba lớp giao diện chồng khít nhau trong góc nghiêng 3D rồi tách ra theo chiều sâu, mỗi lớp lộ nhãn chức năng, sau đó gộp lại.",
+  "use": "Giải thích cấu trúc sản phẩm, các lớp dịch vụ, kiến trúc hệ thống."
+ },
+ {
+  "slug": "cube-words",
+  "name": "Khối lập phương đổi chữ",
+  "group": "3D",
+  "duration": 6,
+  "desc": "Một dải khối lập phương xoay từng mặt, mỗi lần lật đổi sang một từ mới, câu dẫn bên trái đứng yên.",
+  "use": "Liệt kê nhiều lợi ích, nhiều đối tượng khách, \"dành cho …\"."
+ },
+ {
+  "slug": "letter-assemble",
+  "name": "Ký tự bay về xếp chữ",
+  "group": "Chữ",
+  "duration": 5,
+  "desc": "Các ký tự của từ khoá xuất phát từ những vị trí rải khắp khung hình, xoay và bay về xếp thành chữ hoàn chỉnh.",
+  "use": "Tên thương hiệu, từ khoá chủ đề, khoảnh khắc chốt."
+ },
+ {
+  "slug": "marquee-rows",
+  "name": "Hai dải chữ chạy ngược chiều",
+  "group": "Chữ",
+  "duration": 6,
+  "desc": "Hai dải chữ lớn chạy ngang ngược chiều nhau, dải dưới viền rỗng, ở giữa bật lên một khẩu hiệu đứng yên.",
+  "use": "Nền chữ động cho phần chuyển đoạn, khẩu hiệu thương hiệu, poster động."
+ },
+ {
+  "slug": "stripe-wipe",
+  "name": "Chuyển cảnh sọc chéo",
+  "group": "Chuyển cảnh",
+  "duration": 3,
+  "desc": "Các sọc chéo hai màu quét ngang khung hình lệch nhịp, phủ kín cảnh cũ rồi rút đi để lộ cảnh mới.",
+  "use": "Chuyển đoạn năng động, video thể thao, quảng cáo nhịp nhanh."
+ },
+ {
+  "slug": "zoom-push",
+  "name": "Chuyển cảnh phóng xuyên",
+  "group": "Chuyển cảnh",
+  "duration": 3,
+  "desc": "Cảnh cũ phóng to lao về phía máy quay và nhoè đi, cảnh mới từ xa thu vào đúng khung, tạo cảm giác lao xuyên qua.",
+  "use": "Chuyển đoạn mạnh, chuyển từ tổng quan vào chi tiết."
+ },
+ {
+  "slug": "task-progress",
+  "name": "Thanh tiến trình kèm việc",
+  "group": "Giải thích",
+  "duration": 6,
+  "desc": "Thanh tải chạy từ 0 đến 100%, mỗi khi qua một mốc thì một việc trong danh sách đổi sang trạng thái xong, cuối cùng báo hoàn tất.",
+  "use": "Minh hoạ quy trình tự động, AI đang làm việc, các bước xử lý đơn."
+ },
+ {
+  "slug": "venn-overlap",
+  "name": "Hai vòng giao nhau",
+  "group": "Giải thích",
+  "duration": 6,
+  "desc": "Hai vòng tròn mờ trượt vào từ hai bên kèm nhãn, chồng lên nhau, phần giao sáng màu nhấn và hiện từ khoá kết luận.",
+  "use": "Điểm chung của hai nhóm, sản phẩm đáp ứng hai nhu cầu, công thức A + B."
  }
 ]

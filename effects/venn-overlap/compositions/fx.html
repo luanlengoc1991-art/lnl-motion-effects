@@ -1,0 +1,40 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+.vc{position:absolute;top:240px;width:600px;height:600px;border-radius:50%;border:4px solid}
+#vA{left:460px;background:color-mix(in srgb,var(--accent) 22%,transparent);border-color:var(--accent)}
+#vB{left:860px;background:color-mix(in srgb,var(--accent2) 22%,transparent);border-color:var(--accent2)}
+.vl{position:absolute;top:500px;width:300px;text-align:center;font-family:"BVP";font-weight:800;font-size:44px;color:var(--fg)}
+#mid{position:absolute;left:800px;top:465px;width:320px;text-align:center;font-family:"BVP";font-weight:900;font-size:50px;line-height:1.1;color:#111;padding:20px 0;border-radius:24px;background:var(--fg)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div class="vc" id="vA" data-layout-allow-overlap></div><div class="vc" id="vB" data-layout-allow-overlap></div>
+<div class="vl" id="tA" style="left:480px;width:300px" data-var-text="nhanA">Giá hợp lý</div><div class="vl" id="tB" style="left:1140px;width:300px" data-var-text="nhanB">Vị trí đẹp</div>
+<div id="mid" data-var-text="ketqua">Đáng mua</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+tl.fromTo("#vA",{x:-500,opacity:0},{x:0,opacity:1,duration:1,ease:"expo.out"},.2);
+tl.fromTo("#vB",{x:500,opacity:0},{x:0,opacity:1,duration:1,ease:"expo.out"},.4);
+rise("#tA,#tB",1,.15);
+tl.fromTo("#mid",{scale:0},{scale:1,duration:.6,ease:"back.out(2.4)"},2);
+tl.fromTo(["#vA","#vB"],{scale:1},{scale:1.04,duration:.3,yoyo:true,repeat:1},2);
+out(".vc,.vl,#mid",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

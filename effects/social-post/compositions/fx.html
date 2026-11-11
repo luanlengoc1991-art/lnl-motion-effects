@@ -1,0 +1,44 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#po{position:absolute;left:600px;top:70px;width:720px;height:940px;border-radius:44px;background:#fff;overflow:hidden;box-shadow:0 60px 140px #000b}
+#hd{display:flex;align-items:center;gap:20px;padding:28px 32px}
+#hd i{width:72px;height:72px;border-radius:50%;background:var(--accent)}
+#hd b{display:block;font-family:"BVP";font-weight:800;font-size:32px;color:#111}
+#hd span{display:block;font-family:"BVP";font-weight:600;font-size:28px;color:#555}
+#im{height:520px;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+#cp{padding:26px 32px 0;font-family:"BVP";font-weight:600;font-size:30px;line-height:1.4;color:#222}
+#ac{position:absolute;left:32px;right:32px;bottom:34px;display:flex;justify-content:space-between}
+.ab{display:flex;align-items:center;gap:12px;font-family:"BVP";font-weight:900;font-size:36px;color:#111}
+.ab i{width:44px;height:44px;border-radius:12px}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="po"><div id="hd"><i></i><div><b data-var-text="ten">LNL Studio</b><span>2 giờ trước</span></div></div><div id="im"></div>
+<div id="cp" data-var-text="chuthich">Một ngày ở công trường được kể lại trong 30 giây. Bạn đoán xem cuối video là gì?</div>
+<div id="ac"><div class="ab"><i style="background:#ff3b5c"></i><span id="a0">0</span></div><div class="ab"><i style="background:#3b82f6"></i><span id="a1">0</span></div><div class="ab"><i style="background:#22c55e"></i><span id="a2">0</span></div></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+tl.fromTo("#po",{opacity:0,y:200,rotation:6},{opacity:1,y:0,rotation:0,duration:.9,ease:"expo.out"},.1);
+tl.fromTo("#im",{scale:1.2},{scale:1,duration:1.4,ease:"power2.out"},.3);
+count("#a0",48200,1.2,1.6);count("#a1",3150,1.5,1.5);count("#a2",920,1.8,1.4);
+tl.fromTo(".ab",{opacity:0,y:20},{opacity:1,y:0,duration:.4,stagger:.15},1.1);
+out("#po",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

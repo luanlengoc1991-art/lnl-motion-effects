@@ -1,0 +1,40 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#lv{position:absolute;left:560px;top:60px;width:800px;height:960px;border-radius:48px;background:linear-gradient(160deg,#2a2f3a,#12151b);overflow:hidden;border:2px solid #ffffff14}
+#tag{position:absolute;left:36px;top:36px;padding:10px 22px;border-radius:12px;background:#ef4444;font-family:"BVP";font-weight:900;font-size:30px;color:#fff}
+#vw{position:absolute;left:190px;top:36px;padding:10px 22px;border-radius:12px;background:#0007;font-family:"BVP";font-weight:700;font-size:30px;color:#fff}
+#cm{position:absolute;left:30px;right:30px;bottom:40px;height:620px;overflow:hidden}
+.c{position:absolute;left:0;bottom:0;max-width:700px;display:flex;align-items:center;gap:16px;padding:14px 24px 14px 14px;border-radius:999px;background:#0008}
+.c i{flex:none;width:50px;height:50px;border-radius:50%}
+.c span{font-family:"BVP";font-weight:600;font-size:30px;color:#fff;white-space:nowrap}
+.c b{color:var(--accent2);font-weight:800}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="lv"><div id="tag">● LIVE</div><div id="vw" data-var-text="nguoixem">2.381 đang xem</div><div id="cm" data-layout-allow-overflow><div class="c" id="c0"><i style="background:#f97316"></i><span><b>Thu Hà</b> Căn 2PN còn không shop?</span></div><div class="c" id="c1"><i style="background:#22c55e"></i><span><b>Minh Tuấn</b> Giá bao nhiêu ạ</span></div><div class="c" id="c2"><i style="background:#a855f7"></i><span><b>Lan Anh</b> Đẹp quá, chốt 1 căn</span></div><div class="c" id="c3"><i style="background:#3b82f6"></i><span><b>Quốc Bảo</b> Có hỗ trợ vay không?</span></div><div class="c" id="c4"><i style="background:#ec4899"></i><span><b>Ngọc Mai</b> Gửi mình bảng giá với</span></div><div class="c" id="c5"><i style="background:#eab308"></i><span><b>Hữu Phước</b> 🔥🔥🔥</span></div><div class="c" id="c6"><i style="background:#14b8a6"></i><span><b>Thanh Tâm</b> Xem nhà mẫu ở đâu ạ</span></div></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const C=$$(".c"),gap=96,st={k:0};const ap=()=>C.forEach((el,i)=>{const d=st.k-1-i;if(d<0){el.style.opacity="0";return;}el.style.transform="translateY("+(-d*gap)+"px)";el.style.opacity=String(Math.max(0,1-d*.16));});ap();
+tl.fromTo("#lv",{opacity:0,scale:.92},{opacity:1,scale:1,duration:.7,ease:"expo.out"},.1);
+tl.fromTo("#tag",{opacity:1},{opacity:.4,duration:.4,yoyo:true,repeat:7},.5);
+C.forEach((el,i)=>tl.to(st,{k:i+1,duration:.35,ease:"power2.out",onUpdate:ap},.8+i*.75));
+out("#lv",6.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

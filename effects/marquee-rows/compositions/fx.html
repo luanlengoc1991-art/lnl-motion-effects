@@ -1,0 +1,35 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+.mq{position:absolute;left:0;white-space:nowrap;font-family:"BVP";font-weight:900;font-size:180px;line-height:1}
+#m0{top:200px;color:var(--fg)}#m1{top:700px;color:transparent;-webkit-text-stroke:3px var(--muted)}
+#ct{position:absolute;left:560px;top:445px;width:800px;padding:36px;border-radius:36px;background:var(--accent);text-align:center;font-family:"BVP";font-weight:900;font-size:76px;color:#111}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div class="mq" id="m0" data-layout-allow-overflow>SÁNG TẠO · NHANH · ĐẸP · SÁNG TẠO · NHANH · ĐẸP · SÁNG TẠO · NHANH · ĐẸP · SÁNG TẠO · NHANH · ĐẸP · </div><div class="mq" id="m1" data-layout-allow-overflow>VIDEO · HÌNH ẢNH · GIỌNG ĐỌC · VIDEO · HÌNH ẢNH · GIỌNG ĐỌC · VIDEO · HÌNH ẢNH · GIỌNG ĐỌC · VIDEO · HÌNH ẢNH · GIỌNG ĐỌC · </div><div id="ct" data-var-text="khauhieu">Làm là đẹp</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+tl.fromTo("#m0",{x:0},{x:-1400,duration:6,ease:"none"},0);
+tl.fromTo("#m1",{x:-1400},{x:0,duration:6,ease:"none"},0);
+tl.fromTo(".mq",{opacity:0},{opacity:1,duration:.5},.1);
+tl.fromTo("#ct",{scale:0,rotation:-6},{scale:1,rotation:-3,duration:.7,ease:"back.out(2)"},1.2);
+out(".mq,#ct",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>
