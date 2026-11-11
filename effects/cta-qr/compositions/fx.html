@@ -1,0 +1,45 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#qr{position:absolute;left:300px;top:240px;width:600px;height:600px;border-radius:40px;background:#fff;padding:50px}
+#gd{display:grid;grid-template-columns:repeat(21,1fr);gap:2px;width:500px;height:500px}
+#gd i{background:#111;border-radius:2px}
+#gd i.o{background:transparent}
+#sn{position:absolute;left:300px;top:240px;width:600px;height:10px;border-radius:5px;background:var(--accent);box-shadow:0 0 40px var(--accent)}
+#tx{position:absolute;left:1000px;top:330px;width:720px}
+#tx b{display:block;font-family:"BVP";font-weight:900;font-size:76px;line-height:1.1;color:var(--fg)}
+#tx span{display:block;margin-top:24px;font-family:"BVP";font-weight:700;font-size:40px;color:var(--muted)}
+#tx em{display:inline-block;margin-top:34px;padding:18px 34px;border-radius:24px;background:var(--accent);font-style:normal;font-family:"BVP";font-weight:900;font-size:48px;color:#111}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="qr"><div id="gd"></div></div><div id="sn"></div>
+<div id="tx"><b data-var-text="tieude">Quét mã nhận bảng giá</b><span data-var-text="mota">Ưu đãi 5% cho 50 khách đầu tiên</span><em data-var-text="hotline">0909 000 000</em></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const gd=$("#gd"),N=21,on=(r,c)=>{const f=(rr,cc)=>rr<7&&cc<7;const fin=(R,C)=>{const a=Math.max(Math.abs(R-3),Math.abs(C-3));return a!==1;};
+ if(r<7&&c<7)return fin(r,c);if(r<7&&c>=N-7)return fin(r,c-(N-7));if(r>=N-7&&c<7)return fin(r-(N-7),c);return ((r*7+c*13+r*c)%5)<2;};
+let h="";for(let r=0;r<N;r++)for(let c=0;c<N;c++)h+=on(r,c)?"<i></i>":'<i class="o"></i>';gd.innerHTML=h;
+tl.fromTo("#qr",{scale:.6,opacity:0},{scale:1,opacity:1,duration:.7,ease:"back.out(1.6)"},.1);
+tl.fromTo("#gd i",{scale:0},{scale:1,duration:.25,stagger:{each:.0025,from:"start"}},.5);
+tl.fromTo("#sn",{y:0,opacity:0},{y:590,opacity:1,duration:1.1,ease:"sine.inOut",yoyo:true,repeat:1},1.8);
+rise("#tx b,#tx span,#tx em",1,.2);
+out("#qr,#sn,#tx",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

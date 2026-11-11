@@ -1,0 +1,48 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#ch{position:absolute;left:520px;top:300px;display:flex;align-items:center;gap:30px}
+#av{width:150px;height:150px;border-radius:50%;background:linear-gradient(140deg,var(--accent),var(--accent2))}
+#ch b{display:block;font-family:"BVP";font-weight:900;font-size:56px;color:var(--fg)}
+#ch small{display:block;font-family:"BVP";font-weight:600;font-size:32px;color:var(--muted)}
+#bt{position:absolute;left:520px;top:520px;width:520px;height:120px;border-radius:60px;background:#ef4444;display:flex;align-items:center;justify-content:center;font-family:"BVP";font-weight:900;font-size:48px;color:#fff}
+#bt.on{background:#3a404c;color:var(--fg)}
+#bl{position:absolute;left:1080px;top:520px;width:120px;height:120px;border-radius:50%;background:#3a404c;display:flex;align-items:center;justify-content:center}
+#bl svg{width:64px;height:64px}
+#cur{position:absolute;left:0;top:0;width:60px;height:72px}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="ch"><div id="av"></div><div><b data-var-text="kenh">LNL Studio</b><small data-var-text="mota">Video AI mỗi tuần</small></div></div>
+<div id="bt"><span id="btx">Đăng ký</span></div><div id="bl"><svg viewBox="0 0 24 24"><path id="bp" d="M12 3a6 6 0 0 0-6 6v4l-2 3h16l-2-3V9a6 6 0 0 0-6-6zm-2 15a2 2 0 0 0 4 0" fill="none" stroke="var(--fg)" stroke-width="2" stroke-linejoin="round"/></svg></div>
+<svg id="cur" viewBox="0 0 30 36"><path d="M2 2 L2 30 L10 23 L15 34 L20 32 L15 21 L26 21 Z" fill="#fff" stroke="#111" stroke-width="2"/></svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+rise("#ch",.1);tl.fromTo(["#bt","#bl"],{opacity:0,y:40},{opacity:1,y:0,duration:.5,stagger:.1,ease:"back.out(1.8)"},.4);
+tl.fromTo("#cur",{x:1500,y:900,opacity:0},{x:820,y:600,opacity:1,duration:1,ease:"power3.inOut"},.8);
+tl.to("#cur",{scale:.85,duration:.1,yoyo:true,repeat:1},1.85);
+tl.to("#bt",{scale:.94,duration:.1,yoyo:true,repeat:1},1.85);
+tl.set("#bt",{attr:{class:"on"}},1.95);tl.set("#btx",{textContent:"Đã đăng ký ✓"},1.95);
+tl.to("#cur",{x:1140,y:610,duration:.6,ease:"power3.inOut"},2.3);
+tl.to("#bl",{scale:.9,duration:.1,yoyo:true,repeat:1},2.95);
+tl.to("#bl",{background:"#f59e0b",duration:.2},3);
+tl.fromTo("#bl svg",{rotation:0},{rotation:18,duration:.08,yoyo:true,repeat:7,ease:"sine.inOut",transformOrigin:"50% 10%"},3.05);
+out("#ch,#bt,#bl,#cur",4.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

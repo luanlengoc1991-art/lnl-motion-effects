@@ -1,0 +1,51 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#bg2{position:absolute;inset:0}
+#bg2 path{fill:none;stroke:#ffffff10;stroke-width:12}
+#rt{position:absolute;inset:0}
+#rp{fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round}
+#rd{fill:none;stroke:var(--fg);stroke-width:4;stroke-dasharray:4 18;opacity:.5}
+.pn{position:absolute;width:80px;height:96px;margin:-96px 0 0 -40px}
+.pl{position:absolute;padding:14px 26px;border-radius:20px;background:var(--card);border:2px solid #ffffff1c;font-family:"BVP";font-weight:800;font-size:36px;color:var(--fg);white-space:nowrap}
+#tm{position:absolute;left:880px;top:330px;padding:16px 30px;border-radius:999px;background:var(--accent2);font-family:"BVP";font-weight:900;font-size:44px;color:#111}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<svg id="bg2" viewBox="0 0 1920 1080"><path d="M0 300 C 600 360, 1200 200, 1920 280"/><path d="M0 760 C 700 700, 1300 860, 1920 780"/><path d="M500 0 C 560 400, 460 700, 540 1080"/><path d="M1400 0 C 1340 400, 1460 700, 1380 1080"/></svg>
+<svg id="rt" viewBox="0 0 1920 1080"><path id="rd" d="M360 760 C 700 300, 1200 260, 1560 420"/><path id="rp" d="M360 760 C 700 300, 1200 260, 1560 420"/><circle id="dot" r="20" fill="var(--accent2)"/></svg>
+<svg class="pn" id="pA" style="left:360px;top:760px" viewBox="0 0 100 120"><path d="M50 118 C 20 80, 6 60, 6 42 A44 44 0 0 1 94 42 C 94 60, 80 80, 50 118 Z" fill="var(--fg)"/></svg>
+<svg class="pn" id="pB" style="left:1560px;top:420px" viewBox="0 0 100 120"><path d="M50 118 C 20 80, 6 60, 6 42 A44 44 0 0 1 94 42 C 94 60, 80 80, 50 118 Z" fill="var(--accent)"/></svg>
+<div class="pl" id="lA" style="left:220px;top:790px" data-var-text="diemdi">Dự án Eco City</div><div class="pl" id="lB" style="left:1440px;top:450px" data-var-text="diemden">Trung tâm Q1</div>
+<div id="tm" data-var-text="thoigian">15 phút</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const rp=$("#rp"),L=rp.getTotalLength();rp.style.strokeDasharray=L;
+tl.fromTo("#bg2 path",{opacity:0},{opacity:1,duration:.6,stagger:.08},.1);
+tl.fromTo("#pA",{y:-200,opacity:0},{y:0,opacity:1,duration:.6,ease:"bounce.out"},.4);
+tl.fromTo("#pB",{y:-200,opacity:0},{y:0,opacity:1,duration:.6,ease:"bounce.out"},.6);
+rise("#lA,#lB",.9,.15);
+tl.fromTo("#rd",{opacity:0},{opacity:.5,duration:.4},1.2);
+tl.fromTo(rp,{strokeDashoffset:L},{strokeDashoffset:0,duration:2,ease:"power2.inOut"},1.4);
+const o={p:0};const ap=()=>{const pt=rp.getPointAtLength(L*o.p);$("#dot").setAttribute("cx",pt.x.toFixed(1));$("#dot").setAttribute("cy",pt.y.toFixed(1));};ap();
+tl.fromTo(o,{p:0},{p:1,duration:2,ease:"power2.inOut",onUpdate:ap},1.4);
+pop("#tm",2.6);
+out("#bg2,#rt,.pn,.pl,#tm",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,38 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#pie{position:absolute;left:260px;top:180px;width:720px;height:720px}
+#pie circle{fill:none;stroke-width:300}
+.lg{position:absolute;left:1120px;display:flex;align-items:center;gap:24px;font-family:"BVP";font-weight:700;font-size:42px;color:var(--fg)}
+.lg i{width:44px;height:44px;border-radius:12px}
+.lg b{font-weight:900;margin-left:auto;min-width:130px;text-align:right}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<svg id="pie" viewBox="0 0 720 720"></svg><div class="lg" id="g0" style="top:300px;width:600px"><i style="background:var(--accent)"></i>Mạng xã hội<b>46%</b></div><div class="lg" id="g1" style="top:410px;width:600px"><i style="background:var(--accent2)"></i>Tìm kiếm<b>28%</b></div><div class="lg" id="g2" style="top:520px;width:600px"><i style="background:#60a5fa"></i>Giới thiệu<b>16%</b></div><div class="lg" id="g3" style="top:630px;width:600px"><i style="background:#94a3b8"></i>Khác<b>10%</b></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const D=[[46,"var(--accent)"],[28,"var(--accent2)"],[16,"#60a5fa"],[10,"#94a3b8"]],R=150,C=2*Math.PI*R,svg=$("#pie");let acc=0;
+D.forEach(([v,c],i)=>{const el=document.createElementNS("http://www.w3.org/2000/svg","circle");el.setAttribute("cx","360");el.setAttribute("cy","360");el.setAttribute("r",String(R));el.setAttribute("stroke",c);el.setAttribute("transform","rotate("+(-90+acc*3.6)+" 360 360)");el.style.strokeDasharray=(C*v/100).toFixed(2)+" "+C.toFixed(2);el.id="sl"+i;svg.appendChild(el);
+ tl.fromTo(el,{strokeDashoffset:C*v/100},{strokeDashoffset:0,duration:.7*v/46+.2,ease:"power2.out"},.3+acc/100*1.8);
+ const mid=(-90+(acc+v/2)*3.6)*Math.PI/180;if(i===0)tl.to(el,{x:Math.cos(mid)*40,y:Math.sin(mid)*40,duration:.5,ease:"back.out(2)"},2.4);
+ tl.fromTo("#g"+i,{opacity:0,x:40},{opacity:1,x:0,duration:.45,ease:"power3.out"},.5+acc/100*1.8);acc+=v;});
+out("#pie,.lg",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

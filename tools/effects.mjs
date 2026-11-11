@@ -1,3 +1,4 @@
+import { BATCH4 } from './effects4.mjs';
 import { BATCH3 } from './effects3.mjs';
 import { BATCH2 } from './effects2.mjs';
 // LNL Motion Effects: danh sách hiệu ứng (tự thiết kế, viết mới hoàn toàn). Mỗi mục sinh một dự án HyperFrames độc lập.
@@ -278,4 +279,4 @@ tl.fromTo("#lg",{scale:.85,opacity:0},{scale:1,opacity:1,duration:1,ease:"expo.o
 tl.fromTo(o,{n:0},{n:S.length,duration:.9,ease:"none",onUpdate:()=>{sg.textContent=S.slice(0,Math.round(o.n))}},1.5);
 out("#lg,#sg",3.5);`,
   },
-].concat(BATCH2, BATCH3);
+].concat(BATCH2, BATCH3, BATCH4);

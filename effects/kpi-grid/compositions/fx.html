@@ -1,0 +1,39 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#kg{position:absolute;left:200px;top:160px;width:1520px;display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.kp{height:350px;border-radius:36px;background:var(--card);border:2px solid #ffffff12;padding:40px;position:relative}
+.kp small{font-family:"JBM";font-weight:700;font-size:28px;letter-spacing:.12em;color:var(--muted)}
+.kp b{display:block;margin-top:20px;font-family:"BVP";font-weight:900;font-size:84px;color:var(--fg)}
+.kp em{font-style:normal;font-family:"BVP";font-weight:800;font-size:34px}
+.kp em.u{color:#4ade80}.kp em.d{color:#f87171}
+.kp svg{position:absolute;right:36px;bottom:40px;width:200px;height:80px}
+.kp path{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="kg"><div class="kp" id="k0"><small>DOANH THU</small><b id="n0">0</b><em class="u">▲ +18%</em><svg viewBox="0 0 200 80"><path id="p0" d="M4 70 L50 52 L90 58 L140 30 L196 12" stroke="#4ade80"/></svg></div><div class="kp" id="k1"><small>ĐƠN HÀNG</small><b id="n1">0</b><em class="u">▲ +9%</em><svg viewBox="0 0 200 80"><path id="p1" d="M4 60 L50 56 L90 40 L140 44 L196 22" stroke="#4ade80"/></svg></div><div class="kp" id="k2"><small>CHI PHÍ QC</small><b id="n2">0</b><em class="d">▼ −6%</em><svg viewBox="0 0 200 80"><path id="p2" d="M4 20 L50 30 L90 26 L140 46 L196 58" stroke="#f87171"/></svg></div><div class="kp" id="k3"><small>KHÁCH MỚI</small><b id="n3">0</b><em class="u">▲ +24%</em><svg viewBox="0 0 200 80"><path id="p3" d="M4 72 L50 60 L90 44 L140 34 L196 8" stroke="#4ade80"/></svg></div><div class="kp" id="k4"><small>HOÀN ĐƠN</small><b id="n4">0</b><em class="d">▼ −2%</em><svg viewBox="0 0 200 80"><path id="p4" d="M4 40 L50 44 L90 38 L140 50 L196 54" stroke="#f87171"/></svg></div><div class="kp" id="k5"><small>ĐÁNH GIÁ</small><b id="n5">0</b><em class="u">▲ +0,3</em><svg viewBox="0 0 200 80"><path id="p5" d="M4 50 L50 46 L90 40 L140 30 L196 26" stroke="#4ade80"/></svg></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const V=[[2.4,1,""," tỷ"],[1840,0],[312,0,""," tr"],[956,0],[38,0],[4.8,1,"","★"]];
+V.forEach(([v,dec,pre,suf],i)=>{const t=.2+((i%3)+Math.floor(i/3))*.18;tl.fromTo("#k"+i,{opacity:0,y:50,scale:.94},{opacity:1,y:0,scale:1,duration:.55,ease:"back.out(1.7)"},t);
+ count("#n"+i,v,t+.2,1.4,dec||0,pre||"",suf||"");const p=$("#p"+i),L=p.getTotalLength();p.style.strokeDasharray=L;tl.fromTo(p,{strokeDashoffset:L},{strokeDashoffset:0,duration:1,ease:"power2.out"},t+.4);});
+out("#kg",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Sóng âm giọng đọc · LNL Motion Effects</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+      /* Bảng màu: đổi 6 biến này (xem spec.md để có 4 bộ màu dựng sẵn). */
+      #root { position: relative; width: 100%; height: 100%; --bg:#0e1116;--card:#171b22;--fg:#f5f3ee;--muted:#8a93a1;--accent:#ff6b3d;--accent2:#ffc857; }
+      #bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 70% at 50% 40%, color-mix(in srgb, var(--card) 70%, var(--bg)) 0%, var(--bg) 75%); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+      <div id="bg"></div>
+      <div id="fx-host" style="z-index:2" data-composition-id="fx" data-composition-src="compositions/fx.html" data-start="0" data-duration="6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.set({}, {}, 6);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

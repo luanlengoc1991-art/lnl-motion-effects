@@ -1,0 +1,40 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#sky{position:absolute;inset:0;background:linear-gradient(180deg,#120b2a 0%,#3b0d4a 55%,#0b0614 56%)}
+#sun{position:absolute;left:660px;top:180px;width:600px;height:420px;border-radius:300px 300px 0 0;background:linear-gradient(180deg,var(--accent2),var(--accent));-webkit-mask:repeating-linear-gradient(180deg,#000 0 26px,transparent 26px 36px);mask:repeating-linear-gradient(180deg,#000 0 26px,transparent 26px 36px)}
+#pl{position:absolute;left:0;top:0;width:1920px;height:1080px}
+#pl line{stroke:var(--accent);stroke-width:3;opacity:.85}
+#tt{position:absolute;left:0;right:0;top:330px;text-align:center;font-family:"BVP";font-weight:900;font-size:150px;color:#fff;text-shadow:0 0 30px var(--accent),0 0 80px var(--accent)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="sky"></div><div id="sun"></div><svg id="pl" viewBox="0 0 1920 1080" data-layout-ignore></svg><div id="tt" data-var-text="tieude">ĐÊM HỘI 2026</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const pl=$("#pl"),NS="http://www.w3.org/2000/svg",H=600,vx=960;for(let k=-14;k<=14;k++){const l=document.createElementNS(NS,"line");l.setAttribute("x1",String(vx+k*20));l.setAttribute("y1",String(H));l.setAttribute("x2",String(vx+k*260));l.setAttribute("y2","1080");pl.appendChild(l);}
+const hs=[];for(let k=0;k<12;k++){const l=document.createElementNS(NS,"line");l.setAttribute("x1","0");l.setAttribute("x2","1920");pl.appendChild(l);hs.push(l);}
+const o={t:0};const ap=()=>hs.forEach((l,k)=>{const f=((k+o.t*1.5)%12)/12;const y=H+(1080-H)*f*f;l.setAttribute("y1",y.toFixed(1));l.setAttribute("y2",y.toFixed(1));l.style.opacity=String(Math.min(1,f*3));});ap();
+tl.fromTo(o,{t:0},{t:6,duration:6,ease:"none",onUpdate:ap},0);
+tl.fromTo("#sun",{y:200,opacity:0},{y:0,opacity:1,duration:1.4,ease:"expo.out"},.2);
+tl.fromTo("#tt",{opacity:0,scale:1.2},{opacity:1,scale:1,duration:.8,ease:"expo.out"},1);
+tl.to("#tt",{opacity:.75,duration:.08,yoyo:true,repeat:3},2.2);
+out("#tt",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

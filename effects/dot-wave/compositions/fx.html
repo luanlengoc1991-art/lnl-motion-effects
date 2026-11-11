@@ -1,0 +1,35 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#dg{position:absolute;inset:0}
+#dg i{position:absolute;width:14px;height:14px;margin:-7px;border-radius:50%;background:var(--accent)}
+#tt{position:absolute;left:0;right:0;top:450px;text-align:center;font-family:"BVP";font-weight:900;font-size:130px;color:var(--fg);text-shadow:0 0 40px var(--bg)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="dg" data-layout-ignore></div><div id="tt" data-var-text="tieude">Trí tuệ nhân tạo</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const dg=$("#dg"),cols=33,rows=19,dots=[];for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const x=40+c*57.5,y=40+r*55.5;const el=document.createElement("i");el.style.left=x+"px";el.style.top=y+"px";dg.appendChild(el);dots.push([el,Math.hypot(x-960,y-540)]);}
+const o={t:0};const ap=()=>dots.forEach(([el,d])=>{const w=Math.sin(d/90-o.t*4);const s=.35+.65*Math.max(0,w);el.style.transform="scale("+s.toFixed(3)+")";el.style.opacity=(.15+.85*Math.max(0,w)).toFixed(3);});ap();
+tl.fromTo(o,{t:0},{t:6,duration:6,ease:"none",onUpdate:ap},0);
+rise("#tt",.8);
+out("#tt",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

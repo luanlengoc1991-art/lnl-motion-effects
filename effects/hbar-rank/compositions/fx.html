@@ -1,0 +1,41 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#yr{position:absolute;right:220px;top:140px;font-family:"BVP";font-weight:900;font-size:120px;color:var(--muted)}
+.hb{position:absolute;left:220px;height:110px;display:flex;align-items:center}
+.hb .lb{width:300px;font-family:"BVP";font-weight:800;font-size:40px;color:var(--fg)}
+.hb .br{height:84px;border-radius:0 20px 20px 0;transform-origin:left center}
+.hb .vl{margin-left:20px;font-family:"BVP";font-weight:900;font-size:40px;color:var(--fg)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="yr">2024</div><div class="hb" id="h0"><div class="lb">Quận 2</div><div class="br" id="b0" style="background:#ff6b3d"></div><div class="vl" id="v0">0</div></div><div class="hb" id="h1"><div class="lb">Quận 7</div><div class="br" id="b1" style="background:#ffc857"></div><div class="vl" id="v1">0</div></div><div class="hb" id="h2"><div class="lb">Thủ Đức</div><div class="br" id="b2" style="background:#60a5fa"></div><div class="vl" id="v2">0</div></div><div class="hb" id="h3"><div class="lb">Bình Thạnh</div><div class="br" id="b3" style="background:#34d399"></div><div class="vl" id="v3">0</div></div><div class="hb" id="h4"><div class="lb">Quận 9</div><div class="br" id="b4" style="background:#c084fc"></div><div class="vl" id="v4">0</div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const A=[82,64,58,40,22],B=[90,60,96,44,70],mx=100,full=1100,o={p:0};
+const ap=()=>{const vals=A.map((a,i)=>a+(B[i]-a)*o.p);const order=vals.map((v,i)=>[v,i]).sort((x,y)=>y[0]-x[0]);
+ order.forEach(([v,i],rank)=>{$("#h"+i).style.top=(330+rank*130)+"px";$("#b"+i).style.width=(v/mx*full).toFixed(1)+"px";$("#v"+i).textContent=Math.round(v)+"%";});
+ $("#yr").textContent=o.p<.5?"2024":"2026";};
+const g={s:0};const grow=()=>{A.forEach((a,i)=>{$("#b"+i).style.width=(a*g.s/mx*full).toFixed(1)+"px";$("#v"+i).textContent=Math.round(a*g.s)+"%";});};
+ap();tl.fromTo(g,{s:0},{s:1,duration:1.2,ease:"power3.out",onUpdate:grow},.3);
+tl.fromTo(".hb",{opacity:0},{opacity:1,duration:.3,stagger:.08},.2);
+tl.fromTo(o,{p:0},{p:1,duration:2.4,ease:"power2.inOut",onUpdate:ap},2.4);
+out(".hb,#yr",6.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

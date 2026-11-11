@@ -1,0 +1,41 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+.spk{position:absolute;inset:0;background:linear-gradient(160deg,#323846,#161a21);overflow:hidden}
+.spk svg{position:absolute;left:0;right:0;bottom:0;width:100%;height:85%}
+.spk span{position:absolute;left:0;right:0;bottom:24px;text-align:center;font-family:"JBM";font-weight:700;font-size:28px;letter-spacing:.14em;color:#ffffff66}
+#pip{position:absolute;left:110px;bottom:110px;width:320px;height:320px;border-radius:50%;overflow:hidden;border:8px solid var(--accent);box-shadow:0 30px 80px #000b}
+#tp{position:absolute;left:520px;top:220px;right:160px}
+#tp small{display:block;font-family:"JBM";font-weight:700;font-size:32px;letter-spacing:.2em;color:var(--accent)}
+#tp b{display:block;margin-top:20px;font-family:"BVP";font-weight:900;font-size:100px;line-height:1.1;color:var(--fg)}
+#tp i{display:block;margin-top:36px;width:260px;height:12px;border-radius:6px;background:var(--accent2);transform-origin:left center}
+#tp p{margin:36px 0 0;font-family:"BVP";font-weight:600;font-size:42px;line-height:1.4;color:var(--muted)}
+#pg{position:absolute;left:0;bottom:0;height:12px;width:1920px;background:var(--accent);transform-origin:left center}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="pip"><div class="spk"><svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMax slice"><circle cx="200" cy="190" r="92" fill="#ffffff22"/><path d="M40 500 C 60 340, 340 340, 360 500 Z" fill="#ffffff1a"/></svg><span>Video người nói</span></div></div><div id="tp"><small data-var-text="chuong">PHẦN 2</small><b data-var-text="tieude">Định giá căn hộ thế nào?</b><i></i><p data-var-text="mota">Ba yếu tố quyết định: vị trí, pháp lý và tiến độ.</p></div><div id="pg"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+tl.fromTo("#pip",{scale:0},{scale:1,duration:.7,ease:"back.out(1.8)"},.2);
+rise("#tp small,#tp b",.5,.15);tl.fromTo("#tp i",{scaleX:0},{scaleX:1,duration:.5,ease:"power3.out"},1);rise("#tp p",1.2);
+tl.fromTo("#pg",{scaleX:0},{scaleX:1,duration:5.2,ease:"none"},.3);
+out("#pip,#tp",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

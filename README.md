@@ -1,6 +1,6 @@
 # LNL Motion Effects
 
-48 hiệu ứng motion graphic dựng bằng **HyperFrames + GSAP**, chữ tiếng Việt (Be Vietnam Pro), 4 bộ màu dựng sẵn. Tự thiết kế và viết mới.
+66 hiệu ứng motion graphic dựng bằng **HyperFrames + GSAP**, chữ tiếng Việt (Be Vietnam Pro), 4 bộ màu dựng sẵn. Tự thiết kế và viết mới.
 
 Xem online: https://effects.luangroup.asia/
 
@@ -83,6 +83,7 @@ Viết thêm một mục trong `tools/effects.mjs`, rồi `node tools/build.mjs`
 | [<img src="effects/circle-iris/poster.jpg" width="260">](effects/circle-iris/preview.mp4) | **[Chuyển cảnh vòng tròn mở](effects/circle-iris/)**<br>Một chấm màu ở giữa nở thành vòng tròn phủ kín cảnh cũ, rồi vòng thứ hai mở ra từ đó để lộ cảnh mới.<br><sub>Dùng khi: Chuyển đoạn mềm mại, chuyển sang chủ đề mới, hiệu ứng "zoom vào".</sub> | 3s |
 | [<img src="effects/stripe-wipe/poster.jpg" width="260">](effects/stripe-wipe/preview.mp4) | **[Chuyển cảnh sọc chéo](effects/stripe-wipe/)**<br>Các sọc chéo hai màu quét ngang khung hình lệch nhịp, phủ kín cảnh cũ rồi rút đi để lộ cảnh mới.<br><sub>Dùng khi: Chuyển đoạn năng động, video thể thao, quảng cáo nhịp nhanh.</sub> | 3s |
 | [<img src="effects/zoom-push/poster.jpg" width="260">](effects/zoom-push/preview.mp4) | **[Chuyển cảnh phóng xuyên](effects/zoom-push/)**<br>Cảnh cũ phóng to lao về phía máy quay và nhoè đi, cảnh mới từ xa thu vào đúng khung, tạo cảm giác lao xuyên qua.<br><sub>Dùng khi: Chuyển đoạn mạnh, chuyển từ tổng quan vào chi tiết.</sub> | 3s |
+| [<img src="effects/split-slide/poster.jpg" width="260">](effects/split-slide/preview.mp4) | **[Chuyển cảnh tách đôi trượt](effects/split-slide/)**<br>Cảnh cũ cắt ngang làm hai, nửa trên trượt lên, nửa dưới trượt xuống, để lộ cảnh mới nằm phía sau với đường cắt sáng.<br><sub>Dùng khi: Chuyển chương, mở màn sản phẩm, chuyển cảnh gọn gàng.</sub> | 3s |
 
 ## Bất động sản
 
@@ -110,6 +111,53 @@ Viết thêm một mục trong `tools/effects.mjs`, rồi `node tools/build.mjs`
 | [<img src="effects/card-flip/poster.jpg" width="260">](effects/card-flip/preview.mp4) | **[Thẻ lật 3D](effects/card-flip/)**<br>Thẻ lớn nghiêng trong không gian, lật 180 độ quanh trục dọc để lộ mặt sau với câu trả lời, bóng đổ đổi theo góc lật.<br><sub>Dùng khi: Câu hỏi và đáp án, trước và sau, tiết lộ giá hay quà tặng.</sub> | 5s |
 | [<img src="effects/depth-layers/poster.jpg" width="260">](effects/depth-layers/preview.mp4) | **[Lớp thẻ tách chiều sâu](effects/depth-layers/)**<br>Ba lớp giao diện chồng khít nhau trong góc nghiêng 3D rồi tách ra theo chiều sâu, mỗi lớp lộ nhãn chức năng, sau đó gộp lại.<br><sub>Dùng khi: Giải thích cấu trúc sản phẩm, các lớp dịch vụ, kiến trúc hệ thống.</sub> | 6s |
 | [<img src="effects/cube-words/poster.jpg" width="260">](effects/cube-words/preview.mp4) | **[Khối lập phương đổi chữ](effects/cube-words/)**<br>Một dải khối lập phương xoay từng mặt, mỗi lần lật đổi sang một từ mới, câu dẫn bên trái đứng yên.<br><sub>Dùng khi: Liệt kê nhiều lợi ích, nhiều đối tượng khách, "dành cho …".</sub> | 6s |
+
+## Kết video
+
+| Xem trước | Hiệu ứng | Thời lượng |
+|---|---|---|
+| [<img src="effects/end-subscribe/poster.jpg" width="260">](effects/end-subscribe/preview.mp4) | **[Nút đăng ký và chuông](effects/end-subscribe/)**<br>Con trỏ di chuyển tới nút Đăng ký, bấm, nút đổi màu thành Đã đăng ký, chuông bên cạnh rung và sáng lên.<br><sub>Dùng khi: Cuối video YouTube, kêu gọi theo dõi kênh.</sub> | 5s |
+| [<img src="effects/end-next-videos/poster.jpg" width="260">](effects/end-next-videos/preview.mp4) | **[Màn kết gợi ý video](effects/end-next-videos/)**<br>Hai khung video gợi ý trượt vào hai bên, ảnh kênh tròn ở giữa phía dưới, dòng "Xem tiếp" và mũi tên chỉ sang hai khung.<br><sub>Dùng khi: Màn kết YouTube (end screen), điều hướng sang video khác.</sub> | 6s |
+| [<img src="effects/cta-qr/poster.jpg" width="260">](effects/cta-qr/preview.mp4) | **[Mã QR và lời kêu gọi](effects/cta-qr/)**<br>Khung mã QR vẽ dần từng ô vuông, khung quét chạy dọc, bên cạnh lời kêu gọi và hotline hiện lần lượt.<br><sub>Dùng khi: Cuối video quảng cáo, mời quét mã nhận ưu đãi, đặt lịch tham quan.</sub> | 6s |
+
+## Nhạc & nhịp
+
+| Xem trước | Hiệu ứng | Thời lượng |
+|---|---|---|
+| [<img src="effects/eq-bars/poster.jpg" width="260">](effects/eq-bars/preview.mp4) | **[Cột âm lượng nhảy theo nhạc](effects/eq-bars/)**<br>Dãy cột equalizer nhảy lên xuống theo nhịp, màu chuyển dần từ cam sang vàng, tên bài hát và nghệ sĩ hiện bên trên.<br><sub>Dùng khi: Video nhạc, podcast, mở đầu chương trình có nhạc nền.</sub> | 6s |
+| [<img src="effects/beat-title/poster.jpg" width="260">](effects/beat-title/preview.mp4) | **[Chữ đập theo nhịp](effects/beat-title/)**<br>Tiêu đề phóng nhẹ theo mỗi phách 120 BPM, vòng sóng tỏa ra phía sau ở phách mạnh, nền chớp nhẹ theo nhịp.<br><sub>Dùng khi: Intro theo nhạc, reel nhịp nhanh, đoạn cao trào.</sub> | 6s |
+| [<img src="effects/waveform-voice/poster.jpg" width="260">](effects/waveform-voice/preview.mp4) | **[Sóng âm giọng đọc](effects/waveform-voice/)**<br>Dải sóng âm đối xứng chạy theo thời gian, đầu đọc sáng quét ngang, nhãn tên người nói và thời lượng phía trên.<br><sub>Dùng khi: Podcast, audiogram, trích đoạn phỏng vấn, giọng đọc AI.</sub> | 6s |
+
+## Biểu đồ
+
+| Xem trước | Hiệu ứng | Thời lượng |
+|---|---|---|
+| [<img src="effects/pie-slices/poster.jpg" width="260">](effects/pie-slices/preview.mp4) | **[Biểu đồ tròn tách lát](effects/pie-slices/)**<br>Biểu đồ tròn vẽ từng lát theo chiều kim đồng hồ, lát lớn nhất tách ra khỏi tâm, chú thích phần trăm hiện bên phải.<br><sub>Dùng khi: Cơ cấu khách hàng, tỉ trọng doanh thu, phân bổ ngân sách.</sub> | 6s |
+| [<img src="effects/hbar-rank/poster.jpg" width="260">](effects/hbar-rank/preview.mp4) | **[Thanh ngang đổi hạng](effects/hbar-rank/)**<br>Năm thanh ngang mọc ra theo giá trị năm đầu, rồi giá trị đổi sang năm sau, các thanh dài ra và đổi chỗ theo thứ hạng.<br><sub>Dùng khi: So sánh thị phần, xếp hạng khu vực, tăng trưởng giữa hai mốc.</sub> | 7s |
+| [<img src="effects/kpi-grid/poster.jpg" width="260">](effects/kpi-grid/preview.mp4) | **[Lưới chỉ số kinh doanh](effects/kpi-grid/)**<br>Sáu ô chỉ số hiện theo đường chéo, mỗi ô đếm số kèm mũi tên tăng xanh hoặc giảm đỏ và đường xu hướng nhỏ tự vẽ.<br><sub>Dùng khi: Báo cáo tháng, dashboard nhanh, tổng kết chiến dịch.</sub> | 6s |
+
+## Bản đồ
+
+| Xem trước | Hiệu ứng | Thời lượng |
+|---|---|---|
+| [<img src="effects/route-draw/poster.jpg" width="260">](effects/route-draw/preview.mp4) | **[Tuyến đường vẽ giữa hai điểm](effects/route-draw/)**<br>Hai ghim điểm đi và điểm đến cắm xuống, đường nét đứt cong tự vẽ nối hai điểm, chấm sáng chạy dọc tuyến, nhãn thời gian hiện giữa đường.<br><sub>Dùng khi: Khoảng cách tới trung tâm, tuyến giao thông mới, lộ trình giao hàng.</sub> | 6s |
+| [<img src="effects/branch-pins/poster.jpg" width="260">](effects/branch-pins/preview.mp4) | **[Ghim chi nhánh rơi xuống](effects/branch-pins/)**<br>Lưới chấm bản đồ hiện mờ, các ghim rơi xuống lần lượt ở nhiều vị trí, mỗi ghim tỏa vòng sáng, bộ đếm số chi nhánh tăng theo.<br><sub>Dùng khi: Mạng lưới cửa hàng, đại lý toàn quốc, số dự án đã triển khai.</sub> | 6s |
+
+## Người nói
+
+| Xem trước | Hiệu ứng | Thời lượng |
+|---|---|---|
+| [<img src="effects/speaker-side-points/poster.jpg" width="260">](effects/speaker-side-points/preview.mp4) | **[Người nói lệch phải kèm ý chính](effects/speaker-side-points/)**<br>Khung người nói thu nhỏ trượt sang phải, bên trái các ý chính hiện lần lượt kèm số thứ tự, ý đang nói sáng màu nhấn.<br><sub>Dùng khi: Video talking head có liệt kê ý, bài giảng, review sản phẩm.</sub> | 7s |
+| [<img src="effects/karaoke-caption/poster.jpg" width="260">](effects/karaoke-caption/preview.mp4) | **[Phụ đề tô màu từng từ](effects/karaoke-caption/)**<br>Phụ đề lớn ở dưới khung người nói, từng từ sáng lên và nảy nhẹ đúng lúc được nói, từ khoá đổi màu nhấn.<br><sub>Dùng khi: Phụ đề kiểu TikTok / Reels cho video người nói, giọng đọc.</sub> | 6s |
+| [<img src="effects/speaker-pip-topic/poster.jpg" width="260">](effects/speaker-pip-topic/preview.mp4) | **[Khung tròn người nói và chủ đề](effects/speaker-pip-topic/)**<br>Khung người nói tròn ở góc dưới trái nảy ra, thẻ chủ đề lớn chiếm phần còn lại với tiêu đề và gạch nhấn, thanh tiến trình chạy dưới đáy.<br><sub>Dùng khi: Video giải thích có người nói nhỏ ở góc, bài giảng trên slide.</sub> | 6s |
+
+## Nền chuyển động
+
+| Xem trước | Hiệu ứng | Thời lượng |
+|---|---|---|
+| [<img src="effects/gradient-blobs/poster.jpg" width="260">](effects/gradient-blobs/preview.mp4) | **[Nền khối màu trôi](effects/gradient-blobs/)**<br>Các khối màu lớn nhoè mờ trôi chậm và đổi chỗ cho nhau như dung nham, tiêu đề đứng yên phía trên, dùng làm nền cho chữ.<br><sub>Dùng khi: Nền cho tiêu đề, trích dẫn, màn chờ, video thư giãn.</sub> | 8s |
+| [<img src="effects/retro-grid/poster.jpg" width="260">](effects/retro-grid/preview.mp4) | **[Lưới phối cảnh chạy tới](effects/retro-grid/)**<br>Mặt lưới phối cảnh trải về đường chân trời và chạy liên tục về phía người xem, mặt trời sọc lặn phía sau, tiêu đề phát sáng.<br><sub>Dùng khi: Phong cách retro, giới thiệu sự kiện, mở đầu kênh công nghệ.</sub> | 6s |
+| [<img src="effects/dot-wave/poster.jpg" width="260">](effects/dot-wave/preview.mp4) | **[Lưới chấm gợn sóng](effects/dot-wave/)**<br>Lưới chấm phủ kín khung hình, sóng tròn lan ra từ tâm làm chấm phồng to và sáng màu theo nhịp, chữ hiện ở giữa.<br><sub>Dùng khi: Nền công nghệ, mở đầu sản phẩm AI, màn chờ livestream.</sub> | 6s |
 
 ## Bộ màu
 
