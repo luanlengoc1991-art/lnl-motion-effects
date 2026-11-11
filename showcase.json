@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "imperia-nguoi-noi",
+    "name": "Imperia Sensa Park · ba cách dùng video người nói",
+    "desc": "Cùng một đoạn người nói 10 giây, áp ba hiệu ứng: người nói lệch phải kèm ý chính, phụ đề tô màu từng từ, khung tròn kèm thẻ số liệu. Ý và số liệu hiện đúng lúc được đọc.",
+    "uses": ["speaker-side-points", "karaoke-caption", "speaker-pip-topic"],
+    "video": "showcase/imperia-nguoi-noi.mp4",
+    "poster": "showcase/imperia-nguoi-noi.jpg"
+  }
+]

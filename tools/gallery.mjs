@@ -6,13 +6,15 @@ import { THEMES } from './build.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const fx = JSON.parse(fs.readFileSync(path.join(ROOT, 'effects.json'), 'utf8'));
+const show = JSON.parse(fs.readFileSync(path.join(ROOT, 'showcase.json'), 'utf8'));
+const nameOf = Object.fromEntries(fx.map((e) => [e.slug, e.name]));
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const groups = [...new Set(fx.map((e) => e.group))];
 
 const cards = fx.map((e) => `<article data-g="${esc(e.group)}" data-q="${esc((e.name + ' ' + e.desc + ' ' + e.use + ' ' + e.slug).toLowerCase())}">
   <video src="effects/${e.slug}/preview.mp4" poster="effects/${e.slug}/poster.jpg" muted loop playsinline preload="none"></video>
   <div class="b"><span class="g">${esc(e.group)} · ${e.duration}s</span><h3>${esc(e.name)}</h3><p>${esc(e.desc)}</p><p class="u">Dùng khi: ${esc(e.use)}</p>
-  <div class="a"><a href="effects/${e.slug}/compositions/fx.html">Mã cảnh</a><a href="effects/${e.slug}/spec.md">Hướng dẫn</a><a href="effects/${e.slug}/preview.mp4" download>Tải video mẫu</a></div></div>
+  <div class="a"><a href="effects/${e.slug}/compositions/fx.html">Mã cảnh</a><a href="effects/${e.slug}/spec.md">Hướng dẫn</a><a href="effects/${e.slug}/preview.mp4" download>Tải video mẫu</a><a href="zips/${e.slug}.zip">Tải dự án (.zip)</a></div></div>
 </article>`).join('\n');
 
 const html = `<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -32,9 +34,15 @@ article{background:#171b22;border:1px solid #232a33;border-radius:20px;overflow:
 h3{margin:6px 0 6px;font-size:18px}p{margin:0 0 8px;font-size:14px;line-height:1.5;color:#aab2bf}.u{color:#8a93a1;font-size:13px}
 .a{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}.a a{color:#ff8a63;font-size:13px;font-weight:600;text-decoration:none}.a a:hover{text-decoration:underline}
 footer{padding:0 6vw 40px;color:#8a93a1;font-size:13px}
+.sc{margin:0 6vw 10px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;align-items:center;background:#171b22;border:1px solid #232a33;border-radius:24px;overflow:hidden}
+.sc video{aspect-ratio:16/9}.sc .b{padding:24px 28px}.sc h2{margin:6px 0 10px;font-size:26px}.sc .t{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.sc .t span{font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;background:#ff6b3d22;color:#ff8a63}
+.api{margin:18px 6vw 0;padding:16px 20px;border-radius:16px;border:1px dashed #2a313b;color:#aab2bf;font-size:14px}.api code{color:#ffc857}
+@media(max-width:900px){.sc{grid-template-columns:1fr}}
 @media(max-width:640px){.bar{position:static}.bar input{margin-left:0;flex:1 1 100%;min-width:0}main{grid-template-columns:1fr}}
 </style></head><body>
 <header><h1>LNL <b>Motion</b> Effects</h1><p class="sub">${fx.length} hiệu ứng motion graphic dựng bằng HyperFrames + GSAP, chữ tiếng Việt, 4 bộ màu. Mỗi hiệu ứng là một dự án HyperFrames chạy ngay: tải thư mục về, sửa chữ, <code>npx hyperframes render</code>.</p></header>
+${show.map((x) => `<section class="sc"><video src="${x.video}" poster="${x.poster}" controls playsinline preload="metadata"></video><div class="b"><span class="g">Ví dụ thực tế</span><h2>${esc(x.name)}</h2><p>${esc(x.desc)}</p><div class="t">${x.uses.map((u) => `<span>${esc(nameOf[u] || u)}</span>`).join('')}</div></div></section>`).join('')}
+<p class="api">Dành cho app: danh mục <code>/api/effects.json</code> (tên, nhóm, mô tả, video mẫu, ảnh bìa, link tải) và mỗi hiệu ứng một tệp <code>/zips/&lt;mã&gt;.zip</code> chạy ngay bằng HyperFrames. Gọi được từ mọi tên miền.</p>
 <div class="bar"><button class="on" data-f="">Tất cả</button>${groups.map((g) => `<button data-f="${esc(g)}">${esc(g)}</button>`).join('')}<input id="q" placeholder="Tìm: số liệu, chat, logo…" aria-label="Tìm hiệu ứng"></div>
 <main>
 ${cards}
@@ -42,7 +50,7 @@ ${cards}
 <footer>© ${new Date().getFullYear()} LNL Motion Effects. Mã nguồn: <a style="color:#ff8a63" href="https://github.com/luanlengoc1991-art/lnl-motion-effects">GitHub</a>.</footer>
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.preload="auto";v.play().catch(()=>{})}else v.pause()}),{rootMargin:"120px"});
-document.querySelectorAll("video").forEach(v=>io.observe(v));
+document.querySelectorAll("article video").forEach(v=>io.observe(v));
 let g="";const apply=()=>{const s=q.value.trim().toLowerCase();document.querySelectorAll("article").forEach(a=>{a.hidden=(g&&a.dataset.g!==g)||(s&&!a.dataset.q.includes(s))})};
 document.querySelectorAll(".bar button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".bar button").forEach(x=>x.classList.toggle("on",x===b));g=b.dataset.f;apply()});
 q.oninput=apply;
@@ -54,7 +62,7 @@ const md = [`# LNL Motion Effects`, '',
   'Xem online: https://effects.luangroup.asia/', '',
   '## Dùng một hiệu ứng', '```sh', 'cd effects/<ten-hieu-ung>', 'npx hyperframes preview   # xem, sửa trực tiếp', 'npx hyperframes render    # xuất MP4 1920x1080', '```',
   'Chữ có `data-var-text` sửa trong `compositions/fx.html`; màu là 6 biến trong `#root` của `index.html` (bảng màu ở `spec.md` từng hiệu ứng).', '',
-  '## Đưa lên web', 'Trang chạy trên Cloudflare (Workers Static Assets) ở https://effects.luangroup.asia/: `node tools/gallery.mjs && node tools/dist.mjs && npx wrangler deploy`. Cache: trang chính hỏi lại mỗi lần (Cloudflare giữ 5 phút), video và ảnh lưu 1 ngày (`_headers`).', '','## Thêm hiệu ứng', 'Viết thêm một mục trong `tools/effects.mjs`, rồi `node tools/build.mjs` (sinh dự án), kiểm tra bằng `npx hyperframes check`, render `preview.mp4` / `poster.jpg`, và `node tools/gallery.mjs` (trang thư viện + README).', '',
+  '## Đưa lên web', 'Trang chạy trên Cloudflare (Workers Static Assets) ở https://effects.luangroup.asia/: `node tools/gallery.mjs && node tools/dist.mjs && python tools/pack.py && npx wrangler deploy`. App đọc danh mục ở https://effects.luangroup.asia/api/effects.json (CORS mở) và tải dự án ở /zips/<mã>.zip. Cache: trang chính hỏi lại mỗi lần (Cloudflare giữ 5 phút), video và ảnh lưu 1 ngày (`_headers`).', '','## Thêm hiệu ứng', 'Viết thêm một mục trong `tools/effects.mjs`, rồi `node tools/build.mjs` (sinh dự án), kiểm tra bằng `npx hyperframes check`, render `preview.mp4` / `poster.jpg`, và `node tools/gallery.mjs` (trang thư viện + README).', '',
   ...groups.flatMap((g) => [`## ${g}`, '', '| Xem trước | Hiệu ứng | Thời lượng |', '|---|---|---|',
     ...fx.filter((e) => e.group === g).map((e) => `| [<img src="effects/${e.slug}/poster.jpg" width="260">](effects/${e.slug}/preview.mp4) | **[${e.name}](effects/${e.slug}/)**<br>${e.desc}<br><sub>Dùng khi: ${e.use}</sub> | ${e.duration}s |`), '']),
   '## Bộ màu', '', '| Bộ | Nền | Nhấn | Nhấn 2 |', '|---|---|---|---|', ...Object.values(THEMES).map((t) => `| ${t.name} | ${t.bg} | ${t.accent} | ${t.accent2} |`), '',

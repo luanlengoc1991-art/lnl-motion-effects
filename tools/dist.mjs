@@ -7,6 +7,7 @@ const DIST = path.join(ROOT, 'dist');
 fs.rmSync(DIST, { recursive: true, force: true });
 const cp = (rel) => { const to = path.join(DIST, rel); fs.mkdirSync(path.dirname(to), { recursive: true }); fs.copyFileSync(path.join(ROOT, rel), to); };
 ['index.html', '404.html', '_headers'].forEach(cp);
+for (const f of fs.readdirSync(path.join(ROOT, 'showcase'))) cp('showcase/' + f);
 let n = 0;
 for (const slug of fs.readdirSync(path.join(ROOT, 'effects'))) {
   for (const f of ['preview.mp4', 'poster.jpg', 'spec.md', 'index.html', 'compositions/fx.html']) { cp(`effects/${slug}/${f}`); n++; }
