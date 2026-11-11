@@ -1,0 +1,37 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+.scn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"BVP";font-weight:900;font-size:150px}
+#A{background:var(--card);color:var(--fg)}#B{background:var(--accent2);color:#111;opacity:0}
+#grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(5,1fr);perspective:1400px}
+#grid i{background:var(--accent);transform-origin:center center}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div class="scn" id="A" data-layout-allow-occlusion data-var-text="canhA">Phần 1</div><div class="scn" id="B" data-layout-allow-occlusion data-var-text="canhB">Phần 2</div><div id="grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const tiles=$$("#grid i");
+tiles.forEach((el,k)=>{const r=Math.floor(k/8),c=k%8,d=(r+c)*.05;
+ tl.fromTo(el,{rotationY:90,opacity:0},{rotationY:0,opacity:1,duration:.35,ease:"power2.out"},.4+d);
+ tl.to(el,{rotationY:-90,opacity:0,duration:.35,ease:"power2.in"},1.35+d);});
+tl.set("#A",{opacity:0},1.3);tl.set("#B",{opacity:1},1.3);
+tl.fromTo("#B",{scale:1.08},{scale:1,duration:1,ease:"expo.out"},1.35);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

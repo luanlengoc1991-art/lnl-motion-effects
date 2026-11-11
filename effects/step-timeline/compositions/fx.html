@@ -1,0 +1,43 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#ln{position:absolute;left:200px;right:200px;top:540px;height:8px;border-radius:4px;background:#ffffff1a}
+#fill{position:absolute;left:200px;top:540px;width:1520px;height:8px;border-radius:4px;background:var(--accent);transform-origin:left center}
+#run{position:absolute;left:184px;top:526px;width:36px;height:36px;border-radius:50%;background:var(--accent2);box-shadow:0 0 40px var(--accent2)}
+.mk{position:absolute;top:504px;width:80px;height:80px;margin-left:-40px;border-radius:50%;background:var(--card);border:6px solid var(--accent)}
+.lb{position:absolute;width:380px;margin-left:-190px;text-align:center}
+.lb b{display:block;font-family:"BVP";font-weight:900;font-size:64px;color:var(--fg)}
+.lb span{display:block;margin-top:8px;font-family:"BVP";font-weight:600;font-size:30px;color:var(--muted)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="ln"></div><div id="fill"></div>
+<div class="mk" id="m0" style="left:340px"></div><div class="lb" id="t0" style="left:340px;top:250px"><b>Q1</b><span data-var-text="moc1">Khởi công</span></div><div class="mk" id="m1" style="left:753px"></div><div class="lb" id="t1" style="left:753px;top:640px"><b>Q2</b><span data-var-text="moc2">Cất nóc</span></div><div class="mk" id="m2" style="left:1166px"></div><div class="lb" id="t2" style="left:1166px;top:250px"><b>Q3</b><span data-var-text="moc3">Hoàn thiện</span></div><div class="mk" id="m3" style="left:1579px"></div><div class="lb" id="t3" style="left:1579px;top:640px"><b>Q4</b><span data-var-text="moc4">Bàn giao</span></div>
+<div id="run"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+tl.fromTo("#ln",{scaleX:0},{scaleX:1,duration:.6,ease:"power2.out",transformOrigin:"left center"},.1);
+tl.fromTo("#fill",{scaleX:0},{scaleX:1,duration:3.6,ease:"none"},.6);
+tl.fromTo("#run",{x:0},{x:1520,duration:3.6,ease:"none"},.6);
+[0,1,2,3].forEach(i=>{const t=.6+(140+i*413)/1520*3.6;
+ tl.fromTo("#m"+i,{scale:0},{scale:1,duration:.5,ease:"back.out(2.4)"},t-.1);
+ tl.fromTo("#t"+i,{opacity:0,y:i%2?-30:30},{opacity:1,y:0,duration:.5,ease:"power3.out"},t);});
+out("#ln,#fill,#run,.mk,.lb",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

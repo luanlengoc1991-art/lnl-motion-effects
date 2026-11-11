@@ -1,0 +1,44 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#hd{position:absolute;left:300px;top:170px;font-family:"BVP";font-weight:900;font-size:76px;color:var(--fg)}
+.it{position:absolute;left:300px;display:flex;align-items:center;gap:36px}
+.bx{width:76px;height:76px;border-radius:20px;border:4px solid var(--muted);position:relative}
+.bx svg{position:absolute;inset:6px}
+.bx path{fill:none;stroke:var(--accent);stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.tx{font-family:"BVP";font-weight:700;font-size:56px;color:var(--fg);position:relative}
+.tx i{position:absolute;left:0;right:0;top:54%;height:5px;background:var(--muted);transform-origin:left center;transform:scaleX(0)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="hd" data-var-text="tieude">Trước khi quay video</div>
+<div class="it" id="i0" style="top:330px"><div class="bx" id="x0"><svg viewBox="0 0 56 56"><path id="p0" d="M10 29 L23 42 L46 15"/></svg></div><div class="tx" data-var-text="muc1">Viết kịch bản ngắn gọn<i id="s0"></i></div></div><div class="it" id="i1" style="top:480px"><div class="bx" id="x1"><svg viewBox="0 0 56 56"><path id="p1" d="M10 29 L23 42 L46 15"/></svg></div><div class="tx" data-var-text="muc2">Chuẩn bị ảnh, video gốc<i id="s1"></i></div></div><div class="it" id="i2" style="top:630px"><div class="bx" id="x2"><svg viewBox="0 0 56 56"><path id="p2" d="M10 29 L23 42 L46 15"/></svg></div><div class="tx" data-var-text="muc3">Chọn nhạc và giọng đọc<i id="s2"></i></div></div><div class="it" id="i3" style="top:780px"><div class="bx" id="x3"><svg viewBox="0 0 56 56"><path id="p3" d="M10 29 L23 42 L46 15"/></svg></div><div class="tx" data-var-text="muc4">Xuất bản 9:16 và 16:9<i id="s3"></i></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+rise("#hd",.1);
+[0,1,2,3].forEach(i=>{const t=.5+i*.9,p=$("#p"+i),L=p.getTotalLength();p.style.strokeDasharray=L;
+ tl.fromTo("#i"+i,{opacity:0,x:-60},{opacity:1,x:0,duration:.5,ease:"power3.out"},t);
+ tl.fromTo(p,{strokeDashoffset:L},{strokeDashoffset:0,duration:.4,ease:"power2.out"},t+.45);
+ tl.fromTo("#x"+i,{borderColor:"var(--muted)"},{borderColor:"var(--accent)",duration:.2},t+.45);
+ tl.fromTo("#x"+i,{scale:1},{scale:1.12,duration:.15,yoyo:true,repeat:1},t+.45);
+ tl.fromTo("#s"+i,{scaleX:0},{scaleX:1,duration:.35,ease:"power2.out"},t+.75);
+ tl.to("#i"+i+" .tx",{color:"var(--muted)",duration:.3},t+.75);});
+out("#hd,.it",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

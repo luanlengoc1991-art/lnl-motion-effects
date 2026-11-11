@@ -1,0 +1,90 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LNL Motion Effects · Bộ hiệu ứng HyperFrames</title>
+<meta name="description" content="Bộ hiệu ứng motion graphic dựng bằng HyperFrames + GSAP, chữ tiếng Việt, 4 bộ màu, mỗi hiệu ứng là một dự án chạy ngay.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:"Be Vietnam Pro",system-ui,sans-serif;background:#0e1116;color:#f5f3ee}
+header{padding:56px 6vw 28px}h1{margin:0;font-size:clamp(34px,5vw,64px);font-weight:800;letter-spacing:-.02em}h1 b{color:#ff6b3d}
+.sub{color:#8a93a1;max-width:720px;margin:14px 0 0;line-height:1.6}
+.bar{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 6vw;background:#0e1116e6;backdrop-filter:blur(10px);border-bottom:1px solid #222832}
+.bar button{border:1px solid #2a313b;background:#171b22;color:#f5f3ee;border-radius:999px;padding:8px 16px;font:600 13px inherit;cursor:pointer}.bar button.on{background:#ff6b3d;border-color:#ff6b3d;color:#111}
+.bar input{margin-left:auto;min-width:240px;background:#171b22;border:1px solid #2a313b;border-radius:999px;color:#fff;padding:10px 16px;font:14px inherit}
+main{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px;padding:28px 6vw 70px}
+article{background:#171b22;border:1px solid #232a33;border-radius:20px;overflow:hidden}video{display:block;width:100%;aspect-ratio:16/9;background:#000}
+.b{padding:16px 18px 18px}.g{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ffc857}
+h3{margin:6px 0 6px;font-size:18px}p{margin:0 0 8px;font-size:14px;line-height:1.5;color:#aab2bf}.u{color:#8a93a1;font-size:13px}
+.a{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}.a a{color:#ff8a63;font-size:13px;font-weight:600;text-decoration:none}.a a:hover{text-decoration:underline}
+footer{padding:0 6vw 40px;color:#8a93a1;font-size:13px}
+</style></head><body>
+<header><h1>LNL <b>Motion</b> Effects</h1><p class="sub">12 hiệu ứng motion graphic dựng bằng HyperFrames + GSAP, chữ tiếng Việt, 4 bộ màu. Mỗi hiệu ứng là một dự án HyperFrames chạy ngay: tải thư mục về, sửa chữ, <code>npx hyperframes render</code>.</p></header>
+<div class="bar"><button class="on" data-f="">Tất cả</button><button data-f="Mở đầu">Mở đầu</button><button data-f="Con số">Con số</button><button data-f="Danh sách">Danh sách</button><button data-f="Giải thích">Giải thích</button><button data-f="Chữ">Chữ</button><button data-f="Chuyển cảnh">Chuyển cảnh</button><input id="q" placeholder="Tìm: số liệu, chat, logo…" aria-label="Tìm hiệu ứng"></div>
+<main>
+<article data-g="Mở đầu" data-q="tiêu đề xếp tầng ba dòng tiêu đề trượt lên từ sau mặt nạ, dòng nhấn đổi màu, gạch chân chạy ngang rồi nhãn nhỏ bật lên. mở đầu video, giới thiệu chủ đề, tên chương. title-stack">
+  <video src="effects/title-stack/preview.mp4" poster="effects/title-stack/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Mở đầu · 5s</span><h3>Tiêu đề xếp tầng</h3><p>Ba dòng tiêu đề trượt lên từ sau mặt nạ, dòng nhấn đổi màu, gạch chân chạy ngang rồi nhãn nhỏ bật lên.</p><p class="u">Dùng khi: Mở đầu video, giới thiệu chủ đề, tên chương.</p>
+  <div class="a"><a href="effects/title-stack/compositions/fx.html">Mã cảnh</a><a href="effects/title-stack/spec.md">Hướng dẫn</a><a href="effects/title-stack/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Con số" data-q="ba thẻ số liệu đếm lên ba thẻ nổi lên lệch nhịp, mỗi thẻ đếm số từ 0, thanh tiến độ chạy theo, thẻ giữa sáng viền nhấn. khoe thành tích, số liệu dự án, kết quả khách hàng. stat-cards">
+  <video src="effects/stat-cards/preview.mp4" poster="effects/stat-cards/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Con số · 6s</span><h3>Ba thẻ số liệu đếm lên</h3><p>Ba thẻ nổi lên lệch nhịp, mỗi thẻ đếm số từ 0, thanh tiến độ chạy theo, thẻ giữa sáng viền nhấn.</p><p class="u">Dùng khi: Khoe thành tích, số liệu dự án, kết quả khách hàng.</p>
+  <div class="a"><a href="effects/stat-cards/compositions/fx.html">Mã cảnh</a><a href="effects/stat-cards/spec.md">Hướng dẫn</a><a href="effects/stat-cards/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Con số" data-q="biểu đồ cột mọc lên trục và lưới vẽ ra, năm cột mọc từ đáy theo thứ tự, nhãn giá trị đếm theo chiều cao, cột cao nhất đổi màu nhấn. so sánh doanh thu theo năm, theo kênh, theo sản phẩm. bar-rise">
+  <video src="effects/bar-rise/preview.mp4" poster="effects/bar-rise/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Con số · 6s</span><h3>Biểu đồ cột mọc lên</h3><p>Trục và lưới vẽ ra, năm cột mọc từ đáy theo thứ tự, nhãn giá trị đếm theo chiều cao, cột cao nhất đổi màu nhấn.</p><p class="u">Dùng khi: So sánh doanh thu theo năm, theo kênh, theo sản phẩm.</p>
+  <div class="a"><a href="effects/bar-rise/compositions/fx.html">Mã cảnh</a><a href="effects/bar-rise/spec.md">Hướng dẫn</a><a href="effects/bar-rise/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Danh sách" data-q="danh sách tích dấu bốn dòng hiện lần lượt, ô vuông tự vẽ dấu tích bằng nét, chữ dòng đã xong mờ đi và gạch ngang nhẹ. các bước làm, quyền lợi gói, việc cần chuẩn bị. check-list">
+  <video src="effects/check-list/preview.mp4" poster="effects/check-list/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Danh sách · 6s</span><h3>Danh sách tích dấu</h3><p>Bốn dòng hiện lần lượt, ô vuông tự vẽ dấu tích bằng nét, chữ dòng đã xong mờ đi và gạch ngang nhẹ.</p><p class="u">Dùng khi: Các bước làm, quyền lợi gói, việc cần chuẩn bị.</p>
+  <div class="a"><a href="effects/check-list/compositions/fx.html">Mã cảnh</a><a href="effects/check-list/spec.md">Hướng dẫn</a><a href="effects/check-list/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Giải thích" data-q="khung chat ai gõ và trả lời cửa sổ chat mở ra, câu hỏi gõ từng chữ rồi gửi, ba chấm chờ nhấp nháy, câu trả lời hiện theo từng từ. minh hoạ dùng chatgpt, claude, trợ lý ai trong video hướng dẫn. ai-chat">
+  <video src="effects/ai-chat/preview.mp4" poster="effects/ai-chat/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Giải thích · 7s</span><h3>Khung chat AI gõ và trả lời</h3><p>Cửa sổ chat mở ra, câu hỏi gõ từng chữ rồi gửi, ba chấm chờ nhấp nháy, câu trả lời hiện theo từng từ.</p><p class="u">Dùng khi: Minh hoạ dùng ChatGPT, Claude, trợ lý AI trong video hướng dẫn.</p>
+  <div class="a"><a href="effects/ai-chat/compositions/fx.html">Mã cảnh</a><a href="effects/ai-chat/spec.md">Hướng dẫn</a><a href="effects/ai-chat/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Danh sách" data-q="dòng thời gian bốn mốc đường ngang vẽ dần, chấm sáng chạy dọc đường, tới đâu mốc đó bật lên kèm năm và mô tả ngắn. lộ trình dự án, lịch sử thương hiệu, các bước quy trình. step-timeline">
+  <video src="effects/step-timeline/preview.mp4" poster="effects/step-timeline/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Danh sách · 6s</span><h3>Dòng thời gian bốn mốc</h3><p>Đường ngang vẽ dần, chấm sáng chạy dọc đường, tới đâu mốc đó bật lên kèm năm và mô tả ngắn.</p><p class="u">Dùng khi: Lộ trình dự án, lịch sử thương hiệu, các bước quy trình.</p>
+  <div class="a"><a href="effects/step-timeline/compositions/fx.html">Mã cảnh</a><a href="effects/step-timeline/spec.md">Hướng dẫn</a><a href="effects/step-timeline/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Chữ" data-q="chữ nhiễu tách màu từ khoá xuất hiện kiểu tín hiệu lỗi: ba lớp màu lệch nhau, dải cắt ngang giật, rồi khớp lại thành chữ sạch. nhấn từ khoá, chuyển đoạn kiểu công nghệ, mở đầu nhanh. glitch-word">
+  <video src="effects/glitch-word/preview.mp4" poster="effects/glitch-word/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Chữ · 4s</span><h3>Chữ nhiễu tách màu</h3><p>Từ khoá xuất hiện kiểu tín hiệu lỗi: ba lớp màu lệch nhau, dải cắt ngang giật, rồi khớp lại thành chữ sạch.</p><p class="u">Dùng khi: Nhấn từ khoá, chuyển đoạn kiểu công nghệ, mở đầu nhanh.</p>
+  <div class="a"><a href="effects/glitch-word/compositions/fx.html">Mã cảnh</a><a href="effects/glitch-word/spec.md">Hướng dẫn</a><a href="effects/glitch-word/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Con số" data-q="so sánh trước và sau hai nửa màn hình với nhãn trước / sau, thanh chia trượt qua lại rồi dừng giữa, số liệu hai bên đếm lên. kết quả trước và sau khi dùng sản phẩm, so sánh hai phương án. before-after">
+  <video src="effects/before-after/preview.mp4" poster="effects/before-after/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Con số · 6s</span><h3>So sánh trước và sau</h3><p>Hai nửa màn hình với nhãn TRƯỚC / SAU, thanh chia trượt qua lại rồi dừng giữa, số liệu hai bên đếm lên.</p><p class="u">Dùng khi: Kết quả trước và sau khi dùng sản phẩm, so sánh hai phương án.</p>
+  <div class="a"><a href="effects/before-after/compositions/fx.html">Mã cảnh</a><a href="effects/before-after/spec.md">Hướng dẫn</a><a href="effects/before-after/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Chuyển cảnh" data-q="chuyển cảnh ô lưới lật màn hình chia lưới 8×5, các ô lật theo đường chéo để che cảnh cũ rồi lật tiếp để lộ cảnh mới. chuyển giữa hai đoạn, chuyển sang chương mới. tile-wipe">
+  <video src="effects/tile-wipe/preview.mp4" poster="effects/tile-wipe/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Chuyển cảnh · 3s</span><h3>Chuyển cảnh ô lưới lật</h3><p>Màn hình chia lưới 8×5, các ô lật theo đường chéo để che cảnh cũ rồi lật tiếp để lộ cảnh mới.</p><p class="u">Dùng khi: Chuyển giữa hai đoạn, chuyển sang chương mới.</p>
+  <div class="a"><a href="effects/tile-wipe/compositions/fx.html">Mã cảnh</a><a href="effects/tile-wipe/spec.md">Hướng dẫn</a><a href="effects/tile-wipe/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Giải thích" data-q="thanh tên người nói khối màu trượt vào góc dưới trái, tên và chức danh lộ ra sau mặt nạ, vạch nhấn chạy dọc, giữ rồi rút gọn gàng. giới thiệu người nói trong video phỏng vấn, livestream, talking head. name-strap">
+  <video src="effects/name-strap/preview.mp4" poster="effects/name-strap/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Giải thích · 5s</span><h3>Thanh tên người nói</h3><p>Khối màu trượt vào góc dưới trái, tên và chức danh lộ ra sau mặt nạ, vạch nhấn chạy dọc, giữ rồi rút gọn gàng.</p><p class="u">Dùng khi: Giới thiệu người nói trong video phỏng vấn, livestream, talking head.</p>
+  <div class="a"><a href="effects/name-strap/compositions/fx.html">Mã cảnh</a><a href="effects/name-strap/spec.md">Hướng dẫn</a><a href="effects/name-strap/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Mở đầu" data-q="tính năng quay quanh sản phẩm thẻ sản phẩm ở giữa, sáu nhãn tính năng bay ra theo vòng quỹ đạo, xoay chậm một vòng rồi dừng đúng chỗ. giới thiệu sản phẩm, app, gói dịch vụ có nhiều tính năng. feature-orbit">
+  <video src="effects/feature-orbit/preview.mp4" poster="effects/feature-orbit/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Mở đầu · 7s</span><h3>Tính năng quay quanh sản phẩm</h3><p>Thẻ sản phẩm ở giữa, sáu nhãn tính năng bay ra theo vòng quỹ đạo, xoay chậm một vòng rồi dừng đúng chỗ.</p><p class="u">Dùng khi: Giới thiệu sản phẩm, app, gói dịch vụ có nhiều tính năng.</p>
+  <div class="a"><a href="effects/feature-orbit/compositions/fx.html">Mã cảnh</a><a href="effects/feature-orbit/spec.md">Hướng dẫn</a><a href="effects/feature-orbit/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+<article data-g="Mở đầu" data-q="màn tách đôi lộ logo hai tấm màu che kín màn hình tách ra hai phía, logo phóng nhẹ ở giữa, dòng khẩu hiệu gõ ra bên dưới. mở hoặc kết video thương hiệu, end card. logo-split">
+  <video src="effects/logo-split/preview.mp4" poster="effects/logo-split/poster.jpg" muted loop playsinline preload="none"></video>
+  <div class="b"><span class="g">Mở đầu · 4s</span><h3>Màn tách đôi lộ logo</h3><p>Hai tấm màu che kín màn hình tách ra hai phía, logo phóng nhẹ ở giữa, dòng khẩu hiệu gõ ra bên dưới.</p><p class="u">Dùng khi: Mở hoặc kết video thương hiệu, end card.</p>
+  <div class="a"><a href="effects/logo-split/compositions/fx.html">Mã cảnh</a><a href="effects/logo-split/spec.md">Hướng dẫn</a><a href="effects/logo-split/preview.mp4" download>Tải video mẫu</a></div></div>
+</article>
+</main>
+<footer>© 2026 LNL Motion Effects. Mã nguồn: <a style="color:#ff8a63" href="https://github.com/luanlengoc1991-art/lnl-motion-effects">GitHub</a>.</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.preload="auto";v.play().catch(()=>{})}else v.pause()}),{rootMargin:"120px"});
+document.querySelectorAll("video").forEach(v=>io.observe(v));
+let g="";const apply=()=>{const s=q.value.trim().toLowerCase();document.querySelectorAll("article").forEach(a=>{a.hidden=(g&&a.dataset.g!==g)||(s&&!a.dataset.q.includes(s))})};
+document.querySelectorAll(".bar button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".bar button").forEach(x=>x.classList.toggle("on",x===b));g=b.dataset.f;apply()});
+q.oninput=apply;
+</script></body></html>

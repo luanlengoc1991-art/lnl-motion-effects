@@ -1,0 +1,41 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+.gw{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.gw span{position:absolute;font-family:"BVP";font-weight:900;font-size:220px;letter-spacing:-.02em;mix-blend-mode:screen}
+#g1{color:#ff2e63}#g2{color:#08d9d6}#g3{color:var(--fg);mix-blend-mode:normal}
+.sl{position:absolute;left:0;right:0;height:46px;background:var(--bg)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div class="gw" data-layout-allow-overlap><span id="g1" data-var-text="tu">TƯƠNG LAI</span><span id="g2" data-var-text="tu">TƯƠNG LAI</span><span id="g3" data-var-text="tu">TƯƠNG LAI</span></div>
+<div class="sl" id="s1" style="top:430px"></div><div class="sl" id="s2" style="top:560px"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const jit=[[-18,6],[14,-4],[-8,10],[22,0],[-4,-6],[0,0]];
+tl.fromTo(".gw span",{opacity:0},{opacity:1,duration:.05},.2);
+jit.forEach((j,k)=>{const t=.25+k*.09;tl.set("#g1",{x:j[0],y:j[1]},t);tl.set("#g2",{x:-j[0],y:-j[1]},t);tl.set("#g3",{x:j[1]/2,skewX:k%2?6:-4},t);
+ tl.set("#s1",{x:k%2?-200:240,opacity:k<5?1:0},t);tl.set("#s2",{x:k%2?260:-180,opacity:k<5?1:0},t);});
+tl.set("#g3",{skewX:0,x:0},.8);
+tl.to(["#g1","#g2"],{x:0,y:0,opacity:0,duration:.35,ease:"power2.out"},.85);
+tl.fromTo("#g3",{scale:1.06},{scale:1,duration:.6,ease:"expo.out"},.85);
+[2.4,2.5].forEach((t,k)=>{tl.set("#g1",{x:k?0:-12,opacity:k?0:1},t);tl.set("#g2",{x:k?0:12,opacity:k?0:1},t);});
+out(".gw",3.5);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

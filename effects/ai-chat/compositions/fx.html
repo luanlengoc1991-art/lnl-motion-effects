@@ -1,0 +1,57 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#win{position:absolute;left:360px;top:130px;width:1200px;height:820px;border-radius:40px;background:var(--card);border:2px solid #ffffff14;box-shadow:0 60px 140px #000a;overflow:hidden}
+#bar{height:84px;display:flex;align-items:center;gap:14px;padding:0 36px;border-bottom:2px solid #ffffff10}
+#bar i{width:18px;height:18px;border-radius:50%;background:#ffffff26}
+#bar b{margin-left:20px;font-family:"BVP";font-weight:700;font-size:28px;color:var(--fg)}
+.msg{position:absolute;max-width:820px;padding:28px 36px;border-radius:30px;font-family:"BVP";font-weight:600;font-size:36px;line-height:1.4}
+#q{right:48px;top:140px;background:var(--accent);color:#111;border-bottom-right-radius:8px}
+#a{left:48px;top:330px;background:#ffffff0d;color:var(--fg);border-bottom-left-radius:8px}
+#dots{position:absolute;left:48px;top:330px;padding:30px 36px;border-radius:30px;background:#ffffff0d;display:flex;gap:12px}
+#dots i{width:16px;height:16px;border-radius:50%;background:var(--muted)}
+#inp{position:absolute;left:36px;right:36px;bottom:36px;height:96px;border-radius:28px;background:#ffffff0a;border:2px solid #ffffff14;display:flex;align-items:center;padding:0 32px;font-family:"BVP";font-weight:600;font-size:34px;color:var(--fg)}
+#cur{display:inline-block;width:4px;height:40px;background:var(--accent);margin-left:6px}
+#send{position:absolute;right:20px;width:64px;height:64px;border-radius:20px;background:var(--accent)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="win"><div id="bar"><i></i><i></i><i></i><b>Trợ lý AI</b></div>
+<div class="msg" id="q"></div><div id="dots"><i></i><i></i><i></i></div><div class="msg" id="a"></div>
+<div id="inp"><span id="typed"></span><span id="cur"></span><div id="send"></div></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const Q="Viết giúp mình 3 ý tưởng video ngắn cho quán cà phê.",A="1. Một ngày của ly cà phê từ hạt tới tay khách. 2. Barista thử pha 5 kiểu trong 30 giây. 3. Khách quen kể lý do quay lại mỗi sáng.";
+const ty=$("#typed"),o={n:0};
+tl.fromTo("#win",{opacity:0,y:80,scale:.94},{opacity:1,y:0,scale:1,duration:.7,ease:"expo.out"},.1);
+tl.fromTo(o,{n:0},{n:Q.length,duration:1.6,ease:"none",onUpdate:()=>{ty.textContent=Q.slice(0,Math.round(o.n))}},.7);
+tl.fromTo("#send",{scale:1},{scale:.82,duration:.1,yoyo:true,repeat:1},2.4);
+tl.set(ty,{textContent:""},2.5);
+$("#q").textContent=Q;
+tl.fromTo("#q",{opacity:0,y:30,scale:.9},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(1.8)"},2.5);
+tl.fromTo("#dots",{opacity:0},{opacity:1,duration:.2},2.95);
+tl.fromTo("#dots i",{y:0},{y:-12,duration:.25,ease:"sine.inOut",stagger:.1,yoyo:true,repeat:3},3);
+tl.to("#dots",{opacity:0,duration:.15},4.05);
+const words=A.split(" ");$("#a").innerHTML=words.map(w=>"<span class=w>"+w+" </span>").join("");
+tl.fromTo("#a",{opacity:0},{opacity:1,duration:.01},4.1);
+tl.fromTo("#a .w",{opacity:0},{opacity:1,duration:.05,stagger:.045},4.1);
+tl.fromTo("#cur",{opacity:1},{opacity:0,duration:.01,repeat:12,yoyo:true,repeatDelay:.25},0);
+out("#win",6.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

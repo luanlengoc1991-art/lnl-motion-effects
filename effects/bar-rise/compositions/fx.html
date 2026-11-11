@@ -1,0 +1,49 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#ch{position:absolute;left:260px;top:180px;width:1400px;height:700px}
+.gl{position:absolute;left:0;right:0;height:2px;background:#ffffff12;transform-origin:left center}
+#ax{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--muted);transform-origin:left center}
+.col{position:absolute;bottom:4px;width:170px;border-radius:18px 18px 4px 4px;background:var(--card);border:2px solid #ffffff1a;transform-origin:bottom center}
+.col.top{background:var(--accent);border-color:var(--accent)}
+.v{position:absolute;width:170px;text-align:center;font-family:"BVP";font-weight:800;font-size:44px;color:var(--fg)}
+.x{position:absolute;bottom:-64px;width:170px;text-align:center;font-family:"JBM";font-weight:700;font-size:26px;color:var(--muted)}
+#cap{position:absolute;left:260px;top:90px;font-family:"BVP";font-weight:800;font-size:52px;color:var(--fg)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="cap" data-var-text="tieude">Doanh thu (tỷ đồng)</div>
+<div id="ch"><div class="gl" style="top:0"></div><div class="gl" style="top:175px"></div><div class="gl" style="top:350px"></div><div class="gl" style="top:525px"></div><div id="ax"></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const ch=$("#ch"),vals=[18,26,22,41,63],lab=["2022","2023","2024","2025","2026"],max=70;
+vals.forEach((v,i)=>{const x=60+i*270,h=Math.round(v/max*690);
+ const c=document.createElement("div");c.className="col"+(v===63?" top":"");c.style.left=x+"px";c.style.height=h+"px";c.id="b"+i;ch.appendChild(c);
+ const n=document.createElement("div");n.className="v";n.style.left=x+"px";n.style.bottom=(h+20)+"px";n.id="v"+i;n.textContent="0";ch.appendChild(n);
+ const l=document.createElement("div");l.className="x";l.style.left=x+"px";l.textContent=lab[i];ch.appendChild(l);
+ tl.fromTo(c,{scaleY:0},{scaleY:1,duration:.9,ease:"power3.out"},.9+i*.18);
+ tl.fromTo(n,{y:h},{y:0,duration:.9,ease:"power3.out"},.9+i*.18);
+ count("#v"+i,v,.9+i*.18,.9);});
+rise("#cap",.1);
+tl.fromTo(".gl",{scaleX:0},{scaleX:1,duration:.7,ease:"power2.out",stagger:.07},.2);
+tl.fromTo("#ax",{scaleX:0},{scaleX:1,duration:.7,ease:"power2.out"},.3);
+tl.fromTo(".x",{opacity:0},{opacity:1,duration:.4,stagger:.08},.6);
+out("#ch,#cap",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

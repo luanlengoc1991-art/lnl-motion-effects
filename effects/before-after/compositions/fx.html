@@ -1,0 +1,47 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+.half{position:absolute;top:0;bottom:0;width:960px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#L{left:0;background:#1d2129}#R{left:960px;background:var(--accent)}
+.half small{font-family:"JBM";font-weight:700;font-size:30px;letter-spacing:.3em}
+#L small{color:var(--muted)}#R small{color:#111}
+.half b{font-family:"BVP";font-weight:900;font-size:200px;line-height:1.1;letter-spacing:-.03em}
+#L b{color:var(--fg)}#R b{color:#111}
+.half p{font-family:"BVP";font-weight:700;font-size:40px}
+#L p{color:var(--muted)}#R p{color:#111c}
+#div{position:absolute;top:0;bottom:0;left:954px;width:12px;background:var(--fg)}
+#knob{position:absolute;left:910px;top:490px;width:100px;height:100px;border-radius:50%;background:var(--fg);box-shadow:0 10px 40px #0008}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div class="half" id="L"><small>TRƯỚC</small><b id="nL">0</b><p data-var-text="nhanL">giờ làm mỗi video</p></div>
+<div class="half" id="R"><small>SAU</small><b id="nR">0</b><p data-var-text="nhanR">phút với AI</p></div>
+<div id="div"></div><div id="knob"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+tl.fromTo("#L",{xPercent:-100},{xPercent:0,duration:.7,ease:"expo.out"},.1);
+tl.fromTo("#R",{xPercent:100},{xPercent:0,duration:.7,ease:"expo.out"},.1);
+tl.fromTo(["#div","#knob"],{opacity:0},{opacity:1,duration:.3},.6);
+tl.to(["#div","#knob"],{x:-260,duration:.7,ease:"power2.inOut"},1);
+tl.to(["#div","#knob"],{x:220,duration:.8,ease:"power2.inOut"},1.75);
+tl.to(["#div","#knob"],{x:0,duration:.6,ease:"back.out(1.6)"},2.6);
+count("#nL",6,.9,1.2,0,"","h");count("#nR",15,1.1,1.6,0,"","'");
+out(".half,#div,#knob",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

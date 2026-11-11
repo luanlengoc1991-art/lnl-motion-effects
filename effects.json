@@ -1,0 +1,98 @@
+[
+ {
+  "slug": "title-stack",
+  "name": "Tiêu đề xếp tầng",
+  "group": "Mở đầu",
+  "duration": 5,
+  "desc": "Ba dòng tiêu đề trượt lên từ sau mặt nạ, dòng nhấn đổi màu, gạch chân chạy ngang rồi nhãn nhỏ bật lên.",
+  "use": "Mở đầu video, giới thiệu chủ đề, tên chương."
+ },
+ {
+  "slug": "stat-cards",
+  "name": "Ba thẻ số liệu đếm lên",
+  "group": "Con số",
+  "duration": 6,
+  "desc": "Ba thẻ nổi lên lệch nhịp, mỗi thẻ đếm số từ 0, thanh tiến độ chạy theo, thẻ giữa sáng viền nhấn.",
+  "use": "Khoe thành tích, số liệu dự án, kết quả khách hàng."
+ },
+ {
+  "slug": "bar-rise",
+  "name": "Biểu đồ cột mọc lên",
+  "group": "Con số",
+  "duration": 6,
+  "desc": "Trục và lưới vẽ ra, năm cột mọc từ đáy theo thứ tự, nhãn giá trị đếm theo chiều cao, cột cao nhất đổi màu nhấn.",
+  "use": "So sánh doanh thu theo năm, theo kênh, theo sản phẩm."
+ },
+ {
+  "slug": "check-list",
+  "name": "Danh sách tích dấu",
+  "group": "Danh sách",
+  "duration": 6,
+  "desc": "Bốn dòng hiện lần lượt, ô vuông tự vẽ dấu tích bằng nét, chữ dòng đã xong mờ đi và gạch ngang nhẹ.",
+  "use": "Các bước làm, quyền lợi gói, việc cần chuẩn bị."
+ },
+ {
+  "slug": "ai-chat",
+  "name": "Khung chat AI gõ và trả lời",
+  "group": "Giải thích",
+  "duration": 7,
+  "desc": "Cửa sổ chat mở ra, câu hỏi gõ từng chữ rồi gửi, ba chấm chờ nhấp nháy, câu trả lời hiện theo từng từ.",
+  "use": "Minh hoạ dùng ChatGPT, Claude, trợ lý AI trong video hướng dẫn."
+ },
+ {
+  "slug": "step-timeline",
+  "name": "Dòng thời gian bốn mốc",
+  "group": "Danh sách",
+  "duration": 6,
+  "desc": "Đường ngang vẽ dần, chấm sáng chạy dọc đường, tới đâu mốc đó bật lên kèm năm và mô tả ngắn.",
+  "use": "Lộ trình dự án, lịch sử thương hiệu, các bước quy trình."
+ },
+ {
+  "slug": "glitch-word",
+  "name": "Chữ nhiễu tách màu",
+  "group": "Chữ",
+  "duration": 4,
+  "desc": "Từ khoá xuất hiện kiểu tín hiệu lỗi: ba lớp màu lệch nhau, dải cắt ngang giật, rồi khớp lại thành chữ sạch.",
+  "use": "Nhấn từ khoá, chuyển đoạn kiểu công nghệ, mở đầu nhanh."
+ },
+ {
+  "slug": "before-after",
+  "name": "So sánh trước và sau",
+  "group": "Con số",
+  "duration": 6,
+  "desc": "Hai nửa màn hình với nhãn TRƯỚC / SAU, thanh chia trượt qua lại rồi dừng giữa, số liệu hai bên đếm lên.",
+  "use": "Kết quả trước và sau khi dùng sản phẩm, so sánh hai phương án."
+ },
+ {
+  "slug": "tile-wipe",
+  "name": "Chuyển cảnh ô lưới lật",
+  "group": "Chuyển cảnh",
+  "duration": 3,
+  "desc": "Màn hình chia lưới 8×5, các ô lật theo đường chéo để che cảnh cũ rồi lật tiếp để lộ cảnh mới.",
+  "use": "Chuyển giữa hai đoạn, chuyển sang chương mới."
+ },
+ {
+  "slug": "name-strap",
+  "name": "Thanh tên người nói",
+  "group": "Giải thích",
+  "duration": 5,
+  "desc": "Khối màu trượt vào góc dưới trái, tên và chức danh lộ ra sau mặt nạ, vạch nhấn chạy dọc, giữ rồi rút gọn gàng.",
+  "use": "Giới thiệu người nói trong video phỏng vấn, livestream, talking head."
+ },
+ {
+  "slug": "feature-orbit",
+  "name": "Tính năng quay quanh sản phẩm",
+  "group": "Mở đầu",
+  "duration": 7,
+  "desc": "Thẻ sản phẩm ở giữa, sáu nhãn tính năng bay ra theo vòng quỹ đạo, xoay chậm một vòng rồi dừng đúng chỗ.",
+  "use": "Giới thiệu sản phẩm, app, gói dịch vụ có nhiều tính năng."
+ },
+ {
+  "slug": "logo-split",
+  "name": "Màn tách đôi lộ logo",
+  "group": "Mở đầu",
+  "duration": 4,
+  "desc": "Hai tấm màu che kín màn hình tách ra hai phía, logo phóng nhẹ ở giữa, dòng khẩu hiệu gõ ra bên dưới.",
+  "use": "Mở hoặc kết video thương hiệu, end card."
+ }
+]
