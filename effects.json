@@ -94,5 +94,149 @@
   "duration": 4,
   "desc": "Hai tấm màu che kín màn hình tách ra hai phía, logo phóng nhẹ ở giữa, dòng khẩu hiệu gõ ra bên dưới.",
   "use": "Mở hoặc kết video thương hiệu, end card."
+ },
+ {
+  "slug": "word-cascade",
+  "name": "Chữ rơi nảy vào chỗ",
+  "group": "Mở đầu",
+  "duration": 5,
+  "desc": "Từng chữ của câu rơi từ trên xuống, nảy nhẹ khi chạm vạch, từ nhấn cuối cùng phóng to và đổi màu.",
+  "use": "Câu mở đầu, khẩu hiệu, câu chốt cuối video."
+ },
+ {
+  "slug": "spotlight-title",
+  "name": "Đèn rọi lộ tiêu đề",
+  "group": "Mở đầu",
+  "duration": 5,
+  "desc": "Màn hình tối, một vòng đèn rọi lướt qua để lộ dần dòng tiêu đề, rồi đèn bung rộng sáng toàn cảnh.",
+  "use": "Mở màn bí ẩn, giới thiệu sản phẩm mới, tiết lộ tên dự án."
+ },
+ {
+  "slug": "phone-scroll",
+  "name": "Điện thoại cuộn nội dung",
+  "group": "Mở đầu",
+  "duration": 6,
+  "desc": "Khung điện thoại nổi lên nghiêng nhẹ, màn hình cuộn qua các thẻ nội dung, thẻ nổi bật bung ra ngoài khung.",
+  "use": "Giới thiệu app, giao diện mạng xã hội, trang sản phẩm trên di động."
+ },
+ {
+  "slug": "donut-percent",
+  "name": "Vòng tròn phần trăm",
+  "group": "Con số",
+  "duration": 5,
+  "desc": "Vòng tròn vẽ ra theo tỉ lệ, số ở giữa đếm lên cùng nhịp, nhãn giải thích trượt vào bên cạnh.",
+  "use": "Tỉ lệ hoàn thành, tỉ lệ hài lòng, thị phần."
+ },
+ {
+  "slug": "line-growth",
+  "name": "Đường tăng trưởng",
+  "group": "Con số",
+  "duration": 6,
+  "desc": "Đường biểu đồ vẽ từ trái sang phải với vùng tô mờ bên dưới, chấm cuối nhấp nháy và nhãn tăng trưởng bật lên.",
+  "use": "Doanh thu theo tháng, lượt theo dõi kênh, giá trị tăng theo thời gian."
+ },
+ {
+  "slug": "price-drop",
+  "name": "Giá giảm bật lên",
+  "group": "Con số",
+  "duration": 5,
+  "desc": "Giá cũ hiện ra rồi bị gạch chéo, giá mới đập xuống với rung nhẹ, tem phần trăm xoay vào góc.",
+  "use": "Khuyến mãi, flash sale, ưu đãi mở bán."
+ },
+ {
+  "slug": "podium-rank",
+  "name": "Bục xếp hạng",
+  "group": "Con số",
+  "duration": 6,
+  "desc": "Ba bục 2–1–3 mọc lên theo thứ tự hạng ba, hạng hai, hạng nhất; tên và điểm hiện trên bục, hạng nhất có vương miện.",
+  "use": "Top sản phẩm bán chạy, bảng xếp hạng nhân viên, so sánh ba lựa chọn."
+ },
+ {
+  "slug": "card-carousel",
+  "name": "Băng chuyền thẻ",
+  "group": "Danh sách",
+  "duration": 7,
+  "desc": "Năm thẻ xếp ngang trượt qua giữa màn hình, thẻ vào giữa phóng to và sáng lên, thẻ hai bên lùi mờ.",
+  "use": "Giới thiệu nhiều sản phẩm, nhiều gói dịch vụ, nhiều dự án."
+ },
+ {
+  "slug": "three-steps",
+  "name": "Ba bước có mũi tên nối",
+  "group": "Danh sách",
+  "duration": 6,
+  "desc": "Ba khối bước với số to hiện lần lượt, mũi tên cong tự vẽ nối bước trước sang bước sau.",
+  "use": "Quy trình đặt hàng, cách dùng sản phẩm, hướng dẫn nhanh."
+ },
+ {
+  "slug": "pros-cons",
+  "name": "Ưu và nhược hai cột",
+  "group": "Danh sách",
+  "duration": 6,
+  "desc": "Hai cột tiêu đề Nên / Không nên, các dòng hiện xen kẽ hai bên với dấu cộng xanh và dấu trừ đỏ bật lên.",
+  "use": "So sánh hai lựa chọn, việc nên và không nên, ưu nhược điểm."
+ },
+ {
+  "slug": "browser-callout",
+  "name": "Khoanh vùng trên trang web",
+  "group": "Giải thích",
+  "duration": 6,
+  "desc": "Cửa sổ trình duyệt hiện lên, vòng tròn tự vẽ khoanh vào một nút, máy quay đẩy vào vùng đó và chú thích hiện ra.",
+  "use": "Hướng dẫn thao tác trên web, chỉ chỗ bấm, giải thích tính năng."
+ },
+ {
+  "slug": "quote-card",
+  "name": "Thẻ trích dẫn",
+  "group": "Giải thích",
+  "duration": 6,
+  "desc": "Dấu ngoặc kép lớn bật vào, câu trích dẫn hiện theo từng dòng, gạch nhấn chạy dưới tên người nói.",
+  "use": "Lời khách hàng, câu nói nổi tiếng, nhận xét chuyên gia."
+ },
+ {
+  "slug": "notif-stack",
+  "name": "Thông báo đổ dồn",
+  "group": "Giải thích",
+  "duration": 6,
+  "desc": "Các thông báo kiểu điện thoại rơi xuống xếp chồng, thông báo cũ lùi sâu và mờ dần, số đếm trên biểu tượng tăng lên.",
+  "use": "Đơn hàng về liên tục, tin nhắn khách hàng, hiệu ứng \"bùng nổ\" sau chiến dịch."
+ },
+ {
+  "slug": "search-suggest",
+  "name": "Ô tìm kiếm gợi ý",
+  "group": "Giải thích",
+  "duration": 6,
+  "desc": "Ô tìm kiếm lớn, chữ gõ từng ký tự, danh sách gợi ý thả xuống, dòng phù hợp sáng lên rồi được chọn.",
+  "use": "Nói về từ khoá khách tìm, SEO, minh hoạ cách tra cứu."
+ },
+ {
+  "slug": "marker-highlight",
+  "name": "Bút dạ quang tô từ khoá",
+  "group": "Chữ",
+  "duration": 6,
+  "desc": "Đoạn văn hiện ra, nét bút dạ quang quét lần lượt qua các từ khoá theo nhịp đọc, đoạn còn lại mờ đi.",
+  "use": "Nhấn ý chính trong trích dẫn, điều khoản, đoạn giải thích."
+ },
+ {
+  "slug": "type-correct",
+  "name": "Gõ chữ rồi sửa từ",
+  "group": "Chữ",
+  "duration": 6,
+  "desc": "Dòng chữ gõ như máy đánh chữ, con trỏ dừng, xoá lùi một từ rồi gõ lại từ đúng với màu nhấn.",
+  "use": "Đổi góc nhìn (\"không phải… mà là…\"), chơi chữ, câu hook gây tò mò."
+ },
+ {
+  "slug": "outline-fill",
+  "name": "Chữ viền đổ đầy màu",
+  "group": "Chữ",
+  "duration": 5,
+  "desc": "Chữ lớn chỉ có viền vẽ ra trước, sau đó màu đổ đầy từ dưới lên như nước dâng, dòng phụ hiện bên dưới.",
+  "use": "Tiêu đề chương, con số lớn, tên thương hiệu."
+ },
+ {
+  "slug": "circle-iris",
+  "name": "Chuyển cảnh vòng tròn mở",
+  "group": "Chuyển cảnh",
+  "duration": 3,
+  "desc": "Một chấm màu ở giữa nở thành vòng tròn phủ kín cảnh cũ, rồi vòng thứ hai mở ra từ đó để lộ cảnh mới.",
+  "use": "Chuyển đoạn mềm mại, chuyển sang chủ đề mới, hiệu ứng \"zoom vào\"."
  }
 ]

@@ -1,0 +1,41 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#dn{position:absolute;left:300px;top:190px;width:700px;height:700px}
+#dn circle{fill:none;stroke-width:56}
+#bgc{stroke:#ffffff14}#fg{stroke:var(--accent);stroke-linecap:round}
+#pc{position:absolute;left:300px;top:190px;width:700px;height:700px;display:flex;align-items:center;justify-content:center;font-family:"BVP";font-weight:900;font-size:170px;color:var(--fg)}
+#lb{position:absolute;left:1100px;top:400px;width:620px}
+#lb b{display:block;font-family:"BVP";font-weight:900;font-size:66px;color:var(--fg);line-height:1.15}
+#lb span{display:block;margin-top:18px;font-family:"BVP";font-weight:600;font-size:34px;color:var(--muted)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<svg id="dn" viewBox="0 0 700 700"><circle id="bgc" cx="350" cy="350" r="300"/><circle id="fg" cx="350" cy="350" r="300" transform="rotate(-90 350 350)"/></svg>
+<div id="pc">0%</div><div id="lb"><b data-var-text="tieude">Khách quay lại mua lần hai</b><span data-var-text="mota">Số liệu 12 tháng gần nhất</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const P=76,L=1884.96,fg=$("#fg");fg.style.strokeDasharray=L;
+tl.fromTo("#dn",{scale:.7,opacity:0},{scale:1,opacity:1,duration:.7,ease:"expo.out"},.1);
+tl.fromTo(fg,{strokeDashoffset:L},{strokeDashoffset:L*(1-P/100),duration:1.8,ease:"power2.inOut"},.5);
+count("#pc",P,.5,1.8,0,"","%");
+rise("#lb b,#lb span",1.2,.15);
+out("#dn,#pc,#lb",4.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

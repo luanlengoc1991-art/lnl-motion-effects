@@ -1,0 +1,40 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#old{position:absolute;left:0;right:0;top:300px;text-align:center;font-family:"BVP";font-weight:800;font-size:96px;color:var(--muted)}
+#slash{position:absolute;left:640px;top:350px;width:640px;height:10px;border-radius:5px;background:var(--accent);transform-origin:left center;transform:rotate(-8deg)}
+#new{position:absolute;left:0;right:0;top:470px;text-align:center;font-family:"BVP";font-weight:900;font-size:220px;color:var(--fg);letter-spacing:-.03em}
+#new i{font-style:normal;font-size:110px;color:var(--accent)}
+#stamp{position:absolute;left:1380px;top:220px;width:250px;height:250px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-family:"BVP";font-weight:900;font-size:76px;color:#111}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="old" data-layout-allow-occlusion data-var-text="giacu">2.990.000đ</div><div id="slash"></div>
+<div id="new"><span data-var-text="giamoi">1.990.000</span><i>đ</i></div><div id="stamp" data-var-text="giam">-33%</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+rise("#old",.2);
+tl.fromTo("#slash",{scaleX:0},{scaleX:1,duration:.4,ease:"power3.out"},.9);
+tl.fromTo("#new",{scale:2.2,opacity:0},{scale:1,opacity:1,duration:.5,ease:"expo.in"},1.4);
+tl.fromTo("#new",{x:-10},{x:10,duration:.05,yoyo:true,repeat:5,ease:"none"},1.9);
+tl.set("#new",{x:0},2.2);
+tl.fromTo("#stamp",{scale:0,rotation:-180},{scale:1,rotation:-12,duration:.7,ease:"back.out(2)"},2.1);
+out("#old,#slash,#new,#stamp",4.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

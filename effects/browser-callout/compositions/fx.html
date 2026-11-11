@@ -1,0 +1,46 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#cam{position:absolute;inset:0;transform-origin:1180px 600px}
+#bw{position:absolute;left:260px;top:140px;width:1400px;height:820px;border-radius:30px;background:#f4f5f7;overflow:hidden;box-shadow:0 60px 140px #000b}
+#tb{height:70px;background:#e3e5ea;display:flex;align-items:center;gap:12px;padding:0 28px}
+#tb i{width:16px;height:16px;border-radius:50%;background:#c4c8cf}#tb span{margin-left:24px;flex:1;height:36px;border-radius:18px;background:#fff}
+.blk{position:absolute;border-radius:16px;background:#dfe2e8}
+#btn{position:absolute;left:810px;top:420px;width:320px;height:96px;border-radius:24px;background:#2563eb;color:#fff;display:flex;align-items:center;justify-content:center;font-family:"BVP";font-weight:800;font-size:36px}
+#ov{position:absolute;inset:0;width:1920px;height:1080px}
+#ov ellipse{fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round}
+#note{position:absolute;left:1240px;top:780px;padding:22px 34px;border-radius:24px;background:var(--accent);color:#111;font-family:"BVP";font-weight:800;font-size:40px}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="cam"><div id="bw"><div id="tb"><i></i><i></i><i></i><span></span></div>
+<div class="blk" style="left:60px;top:130px;width:620px;height:60px"></div><div class="blk" style="left:60px;top:220px;width:900px;height:30px"></div><div class="blk" style="left:60px;top:270px;width:780px;height:30px"></div>
+<div class="blk" style="left:60px;top:360px;width:600px;height:380px"></div><div id="btn" data-var-text="nut">Tạo video ngay</div></div>
+<svg id="ov" viewBox="0 0 1920 1080"><ellipse id="el" cx="1230" cy="608" rx="240" ry="100" transform="rotate(-4 1230 608)"/></svg></div>
+<div id="note" data-var-text="chuthich">Bấm vào đây để bắt đầu</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const el=$("#el"),L=el.getTotalLength();el.style.strokeDasharray=L;
+tl.fromTo("#bw",{opacity:0,y:80,scale:.95},{opacity:1,y:0,scale:1,duration:.8,ease:"expo.out"},.1);
+tl.fromTo(el,{strokeDashoffset:L},{strokeDashoffset:0,duration:.8,ease:"power2.inOut"},1.2);
+tl.fromTo("#cam",{scale:1},{scale:1.55,duration:1.3,ease:"power3.inOut"},2.1);
+pop("#note",3.2);
+out("#cam,#note",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

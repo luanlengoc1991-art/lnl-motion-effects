@@ -1,0 +1,37 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#tr{position:absolute;left:0;top:240px;height:600px;width:4000px}
+.cc{position:absolute;top:0;width:480px;height:600px;border-radius:44px;background:var(--card);border:2px solid #ffffff14;padding:50px;display:flex;flex-direction:column;justify-content:flex-end}
+.cc em{position:absolute;left:50px;top:50px;font-style:normal;font-family:"JBM";font-weight:700;font-size:30px;color:var(--accent)}
+.cc b{font-family:"BVP";font-weight:900;font-size:60px;color:var(--fg);line-height:1.1}
+.cc span{margin-top:14px;font-family:"BVP";font-weight:600;font-size:30px;color:var(--muted)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="tr" data-layout-allow-overflow><div class="cc" id="k0" style="left:0px"><em>01</em><b>Căn hộ studio</b><span>Từ 1,6 tỷ</span></div><div class="cc" id="k1" style="left:560px"><em>02</em><b>Căn 2 phòng ngủ</b><span>Từ 2,9 tỷ</span></div><div class="cc" id="k2" style="left:1120px"><em>03</em><b>Căn góc 3 phòng</b><span>Từ 4,2 tỷ</span></div><div class="cc" id="k3" style="left:1680px"><em>04</em><b>Penthouse</b><span>Liên hệ</span></div><div class="cc" id="k4" style="left:2240px"><em>05</em><b>Shophouse</b><span>Từ 12 tỷ</span></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const N=5,step=560,center=960-240;const st={p:0};const cards=$$(".cc");
+const ap=()=>{$("#tr").style.transform="translateX("+(center-st.p*step)+"px)";cards.forEach((c,i)=>{const d=Math.min(1,Math.abs(i-st.p));c.style.transform="scale("+(1.12-.22*d)+")";c.style.opacity=String(1-.55*d);c.style.borderColor=d<.3?"var(--accent)":"#ffffff14";});};ap();
+tl.fromTo("#tr",{opacity:0},{opacity:1,duration:.5},.1);
+for(let k=1;k<N;k++)tl.to(st,{p:k,duration:.8,ease:"power3.inOut",onUpdate:ap},.4+k*1.15);
+out("#tr",6.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

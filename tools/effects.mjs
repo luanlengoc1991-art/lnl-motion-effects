@@ -1,3 +1,4 @@
+import { BATCH2 } from './effects2.mjs';
 // LNL Motion Effects: danh sách hiệu ứng (tự thiết kế, viết mới hoàn toàn). Mỗi mục sinh một dự án HyperFrames độc lập.
 // css/html/js là phần thân của cảnh (compositions/fx.html). Biến màu: --bg --card --fg --muted --accent --accent2.
 // Trong js có sẵn: tl (timeline dừng), $, $$, và các hàm nhỏ: rise, pop, draw, count, out.
@@ -276,4 +277,4 @@ tl.fromTo("#lg",{scale:.85,opacity:0},{scale:1,opacity:1,duration:1,ease:"expo.o
 tl.fromTo(o,{n:0},{n:S.length,duration:.9,ease:"none",onUpdate:()=>{sg.textContent=S.slice(0,Math.round(o.n))}},1.5);
 out("#lg,#sg",3.5);`,
   },
-];
+].concat(BATCH2);

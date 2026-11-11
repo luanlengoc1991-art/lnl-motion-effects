@@ -1,0 +1,37 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#tx{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+#tx b{font-family:"BVP";font-weight:900;font-size:150px;color:var(--fg);letter-spacing:-.02em}
+#tx span{font-family:"JBM";font-weight:700;font-size:32px;letter-spacing:.3em;color:var(--accent)}
+#dk{position:absolute;inset:0;background:radial-gradient(circle 260px at var(--x,10%) var(--y,50%),transparent 0,transparent 60%,#000 100%)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="tx"><b data-var-text="tieude">Ra mắt 2026</b><span data-var-text="phu">SẮP CÓ MẶT</span></div><div id="dk" data-layout-allow-occlusion></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const dk=$("#dk"),o={x:5,y:40,r:260};const ap=()=>{dk.style.setProperty("--x",o.x+"%");dk.style.setProperty("--y",o.y+"%");dk.style.background="radial-gradient(circle "+o.r+"px at "+o.x+"% "+o.y+"%,transparent 0,transparent 55%,#000 100%)";};ap();
+tl.fromTo(o,{x:5,y:40},{x:95,y:55,duration:2.2,ease:"sine.inOut",onUpdate:ap},.2);
+tl.to(o,{x:50,y:50,duration:.7,ease:"power2.inOut",onUpdate:ap},2.4);
+tl.to(o,{r:1600,duration:.9,ease:"expo.in",onUpdate:ap},3);
+tl.fromTo("#tx b",{scale:.96},{scale:1,duration:1,ease:"expo.out"},3.4);
+out("#tx",4.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

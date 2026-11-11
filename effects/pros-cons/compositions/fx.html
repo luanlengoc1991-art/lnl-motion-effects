@@ -1,0 +1,39 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+.col{position:absolute;top:170px;width:760px}
+#cA{left:160px}#cB{left:1000px}
+.col h3{margin:0 0 40px;padding-bottom:24px;border-bottom:4px solid;font-family:"BVP";font-weight:900;font-size:64px}
+#cA h3{color:#4ade80;border-color:#4ade80}#cB h3{color:#f87171;border-color:#f87171}
+.rw{display:flex;align-items:center;gap:26px;margin-bottom:34px;font-family:"BVP";font-weight:700;font-size:42px;color:var(--fg)}
+.rw i{flex:none;width:64px;height:64px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-style:normal;font-family:"BVP";font-weight:900;font-size:48px}
+#cA .rw i{background:#4ade8026;color:#4ade80}#cB .rw i{background:#f8717126;color:#f87171}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div class="col" id="cA"><h3>Nên</h3><div class="rw" id="a0"><i>+</i>Câu mở đầu dưới 3 giây</div><div class="rw" id="a1"><i>+</i>Chữ to, đủ tương phản</div><div class="rw" id="a2"><i>+</i>Một ý chính mỗi cảnh</div></div>
+<div class="col" id="cB"><h3>Không nên</h3><div class="rw" id="b0"><i>−</i>Giới thiệu dài dòng</div><div class="rw" id="b1"><i>−</i>Nhạc át giọng đọc</div><div class="rw" id="b2"><i>−</i>Nhồi quá nhiều chữ</div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+rise("#cA h3,#cB h3",.2,.15);
+[0,1,2].forEach(i=>{tl.fromTo("#a"+i,{opacity:0,x:-60},{opacity:1,x:0,duration:.5,ease:"power3.out"},.9+i*1.1);tl.fromTo("#a"+i+" i",{scale:0},{scale:1,duration:.4,ease:"back.out(3)"},1+i*1.1);
+ tl.fromTo("#b"+i,{opacity:0,x:60},{opacity:1,x:0,duration:.5,ease:"power3.out"},1.45+i*1.1);tl.fromTo("#b"+i+" i",{scale:0},{scale:1,duration:.4,ease:"back.out(3)"},1.55+i*1.1);});
+out(".col",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

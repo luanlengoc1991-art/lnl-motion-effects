@@ -1,0 +1,35 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#pa{position:absolute;left:240px;right:240px;top:300px;font-family:"BVP";font-weight:700;font-size:66px;line-height:1.55;color:var(--fg)}
+.hl{position:relative;display:inline-block}
+.hl i{position:absolute;left:-6px;right:-6px;top:18%;bottom:8%;background:var(--accent2);opacity:.85;z-index:0;transform-origin:left center;border-radius:10px}
+.hl span{position:relative;z-index:1}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="pa" data-layout-allow-overlap>Khách không mua sản phẩm, họ mua <span class="hl" id="h0"><i></i><span>kết quả</span></span> mà sản phẩm mang lại. Video tốt cho họ <span class="hl" id="h1"><i></i><span>thấy trước</span></span> kết quả đó trong <span class="hl" id="h2"><i></i><span>vài giây đầu</span></span>.</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+rise("#pa",.2);
+[0,1,2].forEach(i=>{tl.fromTo("#h"+i+" i",{scaleX:0},{scaleX:1,duration:.55,ease:"power2.inOut"},1.2+i*1.1);tl.to("#h"+i+" span",{color:"#111",duration:.2},1.45+i*1.1);});
+tl.to("#pa",{opacity:.55,duration:.5},4.3);
+out("#pa",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

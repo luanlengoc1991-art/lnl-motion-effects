@@ -1,0 +1,39 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+.sp{position:absolute;top:330px;width:440px;height:420px;border-radius:40px;background:var(--card);border:2px solid #ffffff12;padding:44px}
+.sp b{display:block;font-family:"BVP";font-weight:900;font-size:120px;line-height:1;color:var(--accent)}
+.sp h4{margin:26px 0 0;font-family:"BVP";font-weight:800;font-size:46px;color:var(--fg)}
+.sp p{margin:12px 0 0;font-family:"BVP";font-weight:600;font-size:30px;color:var(--muted);line-height:1.35}
+#arr{position:absolute;inset:0;width:1920px;height:1080px}
+#arr path{fill:none;stroke:var(--accent2);stroke-width:8;stroke-linecap:round}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div class="sp" id="sp0" style="left:170px"><b>01</b><h4 data-var-text="buoc1">Chọn mẫu</h4><p>Trong thư viện có sẵn</p></div><div class="sp" id="sp1" style="left:730px"><b>02</b><h4 data-var-text="buoc2">Điền nội dung</h4><p>Chữ, ảnh, màu thương hiệu</p></div><div class="sp" id="sp2" style="left:1290px"><b>03</b><h4 data-var-text="buoc3">Xuất video</h4><p>MP4 dọc hoặc ngang</p></div>
+<svg id="arr" viewBox="0 0 1920 1080"><path id="a0" d="M620 300 C 680 200, 760 200, 820 290"/><path id="a1" d="M1180 300 C 1240 200, 1320 200, 1380 290"/><path id="h0" d="M800 260 L822 292 L786 300"/><path id="h1" d="M1360 260 L1382 292 L1346 300"/></svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+[0,1,2].forEach(i=>rise("#sp"+i,.3+i*1.2));
+[0,1].forEach(i=>{const p=$("#a"+i),h=$("#h"+i),L=p.getTotalLength(),Lh=h.getTotalLength();p.style.strokeDasharray=L;h.style.strokeDasharray=Lh;
+ tl.fromTo(p,{strokeDashoffset:L},{strokeDashoffset:0,duration:.6,ease:"power2.inOut"},.9+i*1.2);
+ tl.fromTo(h,{strokeDashoffset:Lh},{strokeDashoffset:0,duration:.25,ease:"power2.out"},1.45+i*1.2);});
+out(".sp,#arr",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

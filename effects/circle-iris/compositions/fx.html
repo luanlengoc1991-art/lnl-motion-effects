@@ -1,0 +1,35 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+.scn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"BVP";font-weight:900;font-size:150px}
+#A{background:var(--card);color:var(--fg)}#B{background:var(--bg);color:var(--accent)}
+#ir{position:absolute;left:960px;top:540px;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:var(--accent)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div class="scn" id="A" data-var-text="canhA" data-layout-allow-occlusion>Trước</div><div class="scn" id="B" data-var-text="canhB" data-layout-allow-occlusion style="clip-path:circle(0% at 50% 50%)">Sau</div><div id="ir"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+tl.fromTo("#ir",{scale:0},{scale:1,duration:.25,ease:"back.out(3)"},.3);
+tl.to("#ir",{scale:130,duration:.8,ease:"power3.in"},.6);
+const c={r:0};tl.fromTo(c,{r:0},{r:75,duration:.9,ease:"power3.out",onUpdate:()=>{$("#B").style.clipPath="circle("+c.r+"% at 50% 50%)"}},1.45);
+tl.set("#ir",{opacity:0},1.45);
+tl.fromTo("#B",{scale:1.1},{scale:1,duration:1,ease:"expo.out"},1.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>

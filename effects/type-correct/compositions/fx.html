@@ -1,0 +1,37 @@
+<template>
+  <style>
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-Black.ttf");font-weight:900}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-ExtraBold.ttf");font-weight:800}
+@font-face{font-family:"BVP";src:url("assets/fonts/BeVietnamPro-SemiBold.ttf");font-weight:600 700}
+@font-face{font-family:"JBM";src:url("assets/fonts/JetBrainsMono.ttf");font-weight:100 800}
+#root{position:absolute;inset:0;overflow:hidden}
+#fx-wrap{position:absolute;inset:0}
+#ln{position:absolute;left:0;right:0;top:440px;text-align:center;font-family:"BVP";font-weight:900;font-size:110px;color:var(--fg);white-space:nowrap}
+#ln em{font-style:normal;color:var(--accent)}
+#cur{display:inline-block;width:10px;height:110px;margin-left:8px;vertical-align:-14px;background:var(--accent2)}
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1920" data-height="1080">
+    <div id="fx-wrap">
+<div id="ln"><span id="a"></span><em id="b"></em><span id="cur"></span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector("#fx-wrap " + s) || document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll("#fx-wrap " + s));
+function rise(sel, t, st = 0.1) { tl.fromTo(sel, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: st }, t); }
+function pop(sel, t, st = 0.06) { tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)", stagger: st }, t); }
+function count(sel, to, t, d = 1, dec = 0, pre = "", suf = "") { const el = $(sel); const o = { v: 0 }; tl.fromTo(o, { v: 0 }, { v: to, duration: d, ease: "power2.out", onUpdate: () => { el.textContent = pre + (dec ? o.v.toFixed(dec).replace(".", ",") : Math.round(o.v).toLocaleString("vi-VN")) + suf; } }, t); }
+function out(sel, t) { tl.to(sel, { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, t); }
+const A="Video là để ",B1="giải trí",B2="bán hàng",a=$("#a"),b=$("#b"),o={n:0,d:0,m:0};
+tl.fromTo(o,{n:0},{n:A.length+B1.length,duration:1.6,ease:"none",onUpdate:()=>{const k=Math.round(o.n);a.textContent=A.slice(0,k);b.textContent=k>A.length?B1.slice(0,k-A.length):"";b.style.color="var(--fg)";}},.3);
+tl.to(o,{d:B1.length,duration:.6,ease:"none",onUpdate:()=>{b.textContent=B1.slice(0,B1.length-Math.round(o.d));}},2.5);
+tl.to(o,{m:B2.length,duration:.7,ease:"none",onUpdate:()=>{b.style.color="var(--accent)";b.textContent=B2.slice(0,Math.round(o.m));}},3.2);
+tl.fromTo("#ln",{scale:1},{scale:1.06,duration:.3,yoyo:true,repeat:1,ease:"power2.out"},4);
+tl.fromTo("#cur",{opacity:1},{opacity:0,duration:.01,repeat:11,yoyo:true,repeatDelay:.35},0);
+out("#ln",5.45);
+      window.__timelines["fx"] = tl;
+    })();
+  </script>
+</template>
