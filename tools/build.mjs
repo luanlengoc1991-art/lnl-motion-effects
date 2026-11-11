@@ -114,6 +114,11 @@ npx hyperframes render      # xuất MP4
 `;
 }
 
+// Hiệu ứng đã xoá khỏi danh sách: xoá thư mục để web và app không còn nó.
+const keep = new Set(EFFECTS.map((e) => e.slug));
+for (const d of fs.existsSync(path.join(ROOT, 'effects')) ? fs.readdirSync(path.join(ROOT, 'effects')) : []) {
+  if (!keep.has(d)) { fs.rmSync(path.join(ROOT, 'effects', d), { recursive: true, force: true }); console.log('đã xoá hiệu ứng', d); }
+}
 for (const e of EFFECTS) {
   const dir = path.join(ROOT, 'effects', e.slug);
   fs.mkdirSync(path.join(dir, 'compositions'), { recursive: true });
