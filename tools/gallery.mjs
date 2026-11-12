@@ -122,10 +122,8 @@ a{color:inherit}code{font-family:ui-monospace,Consolas,monospace;font-size:.92em
 .step .glow{position:absolute;left:0;top:-60px;width:50%;height:220px;pointer-events:none;background:radial-gradient(closest-side,var(--gc),transparent);opacity:.35;filter:blur(10px)}
 /* ---------- thư viện ---------- */
 .bar{position:sticky;top:84px;z-index:10;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:16px 0;background:rgba(0,0,0,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.bar button{border:1px solid rgba(255,255,255,.18);background:transparent;color:#eee;border-radius:999px;padding:9px 16px;font:600 13px "BG",sans-serif;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-.bar button:hover{border-color:#fff}.bar button.on{background:var(--yel);border-color:var(--yel);color:#111}
-.bar input{margin-left:auto;min-width:260px;background:#0e0e0e;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#fff;padding:12px 18px;font:15px "BG",sans-serif;outline:0}
-.bar input:focus{border-color:var(--yel)}
+.chips button{border:1px solid rgba(255,255,255,.18);background:transparent;color:#eee;border-radius:999px;padding:9px 16px;font:600 13px "BG",sans-serif;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.chips button:hover{border-color:#fff}.chips button.on{background:var(--yel);border-color:var(--yel);color:#111}
 main{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px;padding:30px 0 40px}
 article{position:relative;background:#141414;border:1px solid #1f1f1f;border-radius:28px;overflow:hidden;transition:transform .45s var(--ease),border-color .3s,box-shadow .45s}
 article:hover{transform:translateY(-6px);border-color:rgba(246,188,22,.55);box-shadow:0 24px 50px -28px rgba(246,188,22,.55)}
@@ -145,6 +143,17 @@ h3{margin:8px 0 8px;font-size:21px;font-weight:600;letter-spacing:-.02em}.b p{ma
 .api{margin:0 auto;max-width:1030px;padding:22px 26px;border-radius:22px;border:1px dashed rgba(255,255,255,.22);color:#c7c7c7;line-height:1.6}
 footer{padding:50px 0 60px;color:#8a8a8a;font-size:14px;border-top:1px solid #151515;margin-top:90px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}footer a{color:var(--yel)}
+/* ---------- phần đầu gọn + ô tìm kiếm to ---------- */
+.lead{padding:42px 0 18px}.lead h1{margin:12px 0 0;font-size:clamp(34px,4.4vw,62px);line-height:1;font-weight:800;letter-spacing:-.05em;text-transform:uppercase}
+.lead .sub{margin:12px 0 0;color:var(--mute);font-weight:300;font-size:16px;max-width:760px}
+.bar{flex-direction:column;align-items:stretch;gap:12px}
+.search{display:flex;align-items:center;gap:12px;height:60px;padding:0 18px 0 20px;border-radius:999px;background:#0e0e0e;border:1.5px solid rgba(255,255,255,.2);transition:border-color .2s,box-shadow .2s}
+.search:focus-within{border-color:var(--yel);box-shadow:0 0 0 4px rgba(246,188,22,.14)}
+.search svg{width:22px;height:22px;color:var(--yel);flex:none}
+.search input{flex:1;min-width:0;margin:0!important;border:0!important;background:transparent!important;padding:0!important;font:400 18px "BG",sans-serif!important;color:#fff;outline:0}
+.search kbd{font:600 12px "BG",sans-serif;color:#9a9a9a;border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:3px 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips b{font-weight:400;opacity:.6;margin-left:3px}
+.chips button.on b{opacity:.75}
 /* ---------- hiệu ứng xuất hiện ---------- */
 .rv{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform .9s var(--ease)}.rv.in{opacity:1;transform:none}
 .hero .l1,.hero h1,.hero .l3,.hero .ctas,.frame{animation:up 1s var(--ease) both}
@@ -153,45 +162,28 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 @media(max-width:1000px){.hero,.case{grid-template-columns:1fr}.nav{display:none}.feats{grid-template-columns:1fr}.nums{padding-left:0;grid-template-columns:1fr}.n3{width:auto;margin:0}.intro{grid-template-columns:1fr}
 .steps::before{left:7px}.step{grid-template-columns:1fr}.step .d{grid-column:1;grid-row:2;text-align:left;padding:14px 0 0 40px}.step .c{grid-column:1;padding-left:40px}.step .c::before{left:0}.step .c::after{display:none}.step .glow{display:none}}
-@media(max-width:640px){.top .wrap{height:68px}.top .btn{padding:11px 16px;font-size:13px}.bar{position:static}.bar input{margin-left:0;flex:1 1 100%;min-width:0}main{grid-template-columns:1fr}.why{grid-template-columns:1fr}.mini div{padding:0 18px}.cut,.frame,.frame>div{clip-path:none}}
+@media(max-width:640px){.top .wrap{height:68px}.top .btn{padding:11px 16px;font-size:13px}.bar{position:static}.search{height:52px}.search input{font-size:16px!important}.search kbd{display:none}main{grid-template-columns:1fr}.why{grid-template-columns:1fr}.mini div{padding:0 18px}.cut,.frame,.frame>div{clip-path:none}}
 </style></head><body>
 <header class="top"><div class="wrap">
   <a class="logo" href="#"><i>▶</i><span>LNL<small>Motion Effects</small></span></a>
   <nav class="nav"><a href="#hieu-ung">Hiệu ứng</a><a href="#vi-du">Ví dụ</a><a href="#quy-trinh">Quy trình</a><a href="#api">API</a><a href="https://github.com/luanlengoc1991-art/lnl-motion-effects">GitHub</a></nav>
-  <a class="btn y" href="#hieu-ung">Xem ${fx.length} hiệu ứng</a>
+  <a class="btn y" href="#hieu-ung" onclick="setTimeout(()=>q.focus(),300)">Tìm hiệu ứng</a>
 </div></header>
 
-<div class="wrap">
-<section class="hero">
-  <div>
-    <p class="l1">Thư viện</p>
-    <h1 class="grad">Motion Effects</h1>
-    <p class="l3">cho video HyperFrames</p>
-    <div class="ctas"><a class="btn y" href="#hieu-ung">Xem hiệu ứng <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn o" href="#vi-du">Ví dụ thực tế</a></div>
-  </div>
-  <div class="frame"><div><video src="effects/${hero.slug}/preview.mp4" poster="effects/${hero.slug}/poster.jpg" muted loop autoplay playsinline preload="metadata"></video></div></div>
+<section class="wrap lead">
+  <div><p class="kick">Thư viện HyperFrames + GSAP</p>
+  <h1><span class="grad">${fx.length} hiệu ứng</span> <span class="thin">motion dựng sẵn</span></h1>
+  <p class="sub">Chữ tiếng Việt, ${Object.keys(THEMES).length} bộ màu. Tìm, xem video mẫu, tải .zip hoặc thêm thẳng từ Kho mẫu trong LNL Frames Studio.</p></div>
 </section>
-<section class="intro">
-  <p>${fx.length} hiệu ứng motion graphic dựng bằng HyperFrames + GSAP, chữ tiếng Việt, 4 bộ màu. Mỗi hiệu ứng là một dự án HyperFrames chạy ngay: tải thư mục về, sửa chữ, <code>npx hyperframes render</code>.</p>
-  <div class="mini"><div><b>${fx.length}</b><span>Hiệu ứng</span></div><div><b>${groups.length}</b><span>Nhóm</span></div></div>
-</section>
-</div>
-
-<section class="sec wrap">
-  <div class="sh rv"><div><p class="k">Đủ dùng cho</p><h2>Mọi <span class="grad">cảnh video</span></h2></div><a class="btn y" href="#hieu-ung">Chọn hiệu ứng <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-  <div class="nums">
-    <div class="num n1 rv"><b data-count="${fx.length}">${fx.length}</b><span>Hiệu ứng dựng sẵn, chạy ngay</span></div>
-    <div class="num n2 rv"><b data-count="${groups.length}">${groups.length}</b><span>Nhóm: mở đầu, số liệu, biểu đồ, người nói…</span></div>
-    <div class="num n3 rv"><b data-count="${Object.keys(THEMES).length}">${Object.keys(THEMES).length}</b><span>Bộ màu đổi bằng 6 biến, chữ tiếng Việt đủ dấu</span></div>
+<section class="wrap" id="hieu-ung">
+  <div class="bar">
+    <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Tìm hiệu ứng: số liệu, chat, logo, bản đồ, người nói…" aria-label="Tìm hiệu ứng" autofocus><kbd>/</kbd></label>
+    <div class="chips"><button class="on" data-f="">Tất cả <b>${fx.length}</b></button>${groups.map((g) => `<button data-f="${esc(g)}">${esc(g)} <b>${fx.filter((e) => e.group === g).length}</b></button>`).join('')}</div>
   </div>
-</section>
-
-<section class="sec wrap">
-  <div class="feats">
-    <div class="feat f1 rv">${ICON.stack}<h3>Chạy ngay</h3><p>Mỗi hiệu ứng là một dự án HyperFrames độc lập: tải về, sửa chữ, render ra MP4.</p><div class="st"><b>1</b><span>lệnh để xuất video 1920×1080</span></div></div>
-    <div class="feat f2 rv">${ICON.pill}<h3>Khớp với app</h3><p>Kho mẫu › Hiệu ứng LNL trong LNL Frames Studio đọc thẳng danh mục này, sửa là app tự nhận.</p><div class="st"><b>30'</b><span>app tự làm mới danh mục</span></div></div>
-    <div class="feat f3 rv">${ICON.orbs}<h3>Đủ dấu tiếng Việt</h3><p>Chữ dùng Be Vietnam Pro, chừa chỗ cho dấu chồng, cỡ chữ từ 28 px để đọc rõ trên điện thoại.</p><div class="st"><b>${Object.keys(THEMES).length}</b><span>bộ màu dựng sẵn</span></div></div>
-  </div>
+  <main>
+${cards}
+<p class="empty" id="empty">Không có hiệu ứng khớp. Thử từ khoá khác.</p>
+  </main>
 </section>
 
 <div class="wrap sec">${showcase}</div>
@@ -204,15 +196,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
     <div class="step rv" style="--gc:rgba(124,58,237,.55)"><span class="glow"></span><p class="d">Sửa chữ trong <code>compositions/fx.html</code>, đổi màu bằng 6 biến của bộ màu.</p><div class="c"><small>Bước 3</small><h3>Sửa chữ &amp; màu</h3><div class="tags"><span>data-var-text</span><span>6 biến màu</span><span>Hướng dẫn</span></div></div></div>
     <div class="step rv" style="--gc:rgba(224,30,90,.5)"><span class="glow"></span><p class="d">Xem trước rồi xuất MP4 bằng HyperFrames, giữ chất lượng chuẩn.</p><div class="c"><small>Bước 4</small><h3>Render video</h3><div class="tags"><span>hyperframes preview</span><span>hyperframes render</span></div></div></div>
   </div>
-</section>
-
-<section class="wrap" id="hieu-ung">
-  <div class="sh rv" style="margin-bottom:10px"><div><p class="k">Thư viện</p><h2><span class="grad">${fx.length} hiệu ứng</span> <span class="thin">dựng sẵn</span></h2></div></div>
-  <div class="bar"><button class="on" data-f="">Tất cả</button>${groups.map((g) => `<button data-f="${esc(g)}">${esc(g)}</button>`).join('')}<input id="q" placeholder="Tìm: số liệu, chat, logo…" aria-label="Tìm hiệu ứng"></div>
-  <main>
-${cards}
-<p class="empty" id="empty">Không có hiệu ứng khớp. Thử từ khoá khác.</p>
-  </main>
 </section>
 
 <section class="sec wrap">
@@ -233,8 +216,9 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isInt
 document.querySelectorAll("article video").forEach(v=>io.observe(v));
 let g="";const empty=document.getElementById("empty");
 const apply=()=>{const s=q.value.trim().toLowerCase();let n=0;document.querySelectorAll("article").forEach(a=>{a.hidden=(g&&a.dataset.g!==g)||(s&&!a.dataset.q.includes(s));if(!a.hidden)n++});empty.style.display=n?"none":"block"};
-document.querySelectorAll(".bar button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".bar button").forEach(x=>x.classList.toggle("on",x===b));g=b.dataset.f;apply()});
+document.querySelectorAll(".chips button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".chips button").forEach(x=>x.classList.toggle("on",x===b));g=b.dataset.f;apply()});
 q.oninput=apply;
+addEventListener("keydown",e=>{if(e.key==="/"&&document.activeElement!==q){e.preventDefault();q.focus()}});
 // Hiện dần khi cuộn tới, số liệu đếm lên, chấm quy trình sáng lên
 const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const count=el=>{const to=+el.dataset.count;if(still||!to){el.textContent=to;return}const t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/1200);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)};
