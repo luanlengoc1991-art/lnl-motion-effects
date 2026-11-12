@@ -16,5 +16,8 @@
 /zips/*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+# Phông trang thư viện: không đổi nội dung theo tên, lưu 1 năm.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
 /showcase/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
